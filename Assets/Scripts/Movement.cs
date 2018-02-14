@@ -4,55 +4,58 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour {
 
-    Rigidbody rb;
-    [SerializeField] private float movementSpeed;
-    [SerializeField] private float rotationSpeed;
-	// Use this for initialization
-	void Start () {
-        rb = this.GetComponent<Rigidbody>();
+    //Editor Variables
+    [SerializeField] private float _movementSpeed;
+    [SerializeField] private float _rotationSpeed;
+
+    //Private Variables
+    Rigidbody _rb;
+
+    // Just to get RB
+    private void Awake () {
+        _rb = this.GetComponent<Rigidbody>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	private void Update () {
         if (Input.GetKey(KeyCode.W))
         {
-            rb.AddRelativeForce(Vector3.forward * movementSpeed);
+            _rb.AddRelativeForce(Vector3.forward * _movementSpeed);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            rb.AddRelativeForce(Vector3.back * movementSpeed);
+            _rb.AddRelativeForce(Vector3.back * _movementSpeed);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            rb.AddRelativeForce(Vector3.left * movementSpeed);
+            _rb.AddRelativeForce(Vector3.left * _movementSpeed);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            rb.AddRelativeForce(Vector3.right * movementSpeed);
+            _rb.AddRelativeForce(Vector3.right * _movementSpeed);
         }
         if (Input.GetKey(KeyCode.I))
         {
-            rb.AddRelativeTorque(rotationSpeed,0,0);
+            _rb.AddRelativeTorque(_rotationSpeed,0,0);
         }
         if (Input.GetKey(KeyCode.K))
         {
-            rb.AddRelativeTorque(-rotationSpeed,0,0);
+            _rb.AddRelativeTorque(-_rotationSpeed,0,0);
         }
         if (Input.GetKey(KeyCode.J))
         {
-            rb.AddRelativeTorque(0,0,rotationSpeed);
+            _rb.AddRelativeTorque(0,0,_rotationSpeed);
         }
         if (Input.GetKey(KeyCode.L))
         {
-            rb.AddRelativeTorque(0,0,-rotationSpeed);
+            _rb.AddRelativeTorque(0,0,-_rotationSpeed);
         }
         if (Input.GetKey(KeyCode.U))
         {
-            rb.AddRelativeTorque(0, -rotationSpeed,0);
+            _rb.AddRelativeTorque(0, -_rotationSpeed,0);
         }
         if (Input.GetKey(KeyCode.O))
         {
-            rb.AddRelativeTorque(0, rotationSpeed,0);
+            _rb.AddRelativeTorque(0, _rotationSpeed,0);
         }
     }
 }
