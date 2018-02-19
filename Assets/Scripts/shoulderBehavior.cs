@@ -24,20 +24,16 @@ public class shoulderBehavior : MonoBehaviour {
 			_shoulder.useMotor = true;
 			_muscle.force = _muscleForce;
 			_muscle.targetVelocity = _muscleForce;
-			_shoulder.motor = _muscle;
-			Debug.Log("Q " + _shoulder.motor.targetVelocity);
 		}else if(Input.GetKey(KeyCode.W)){
 			_shoulder.useMotor = true;
 			_muscle.force = _muscleForce;
 			_muscle.targetVelocity = -(_muscleForce);
-			_shoulder.motor = _muscle;
-			Debug.Log("W " + _shoulder.motor.targetVelocity);
 		}else{
 			_shoulder.useMotor = false;
 			_muscle.force = 0;
-			_shoulderBody.velocity = Vector3.zero;
-			_shoulderBody.angularVelocity = Vector3.zero;
-			Debug.Log("none " + _shoulder.motor.targetVelocity);
 		}
+		_shoulder.motor = _muscle;
+		_shoulderBody.velocity = Vector3.zero;
+		_shoulderBody.angularVelocity = Vector3.zero;
 	}
 }
