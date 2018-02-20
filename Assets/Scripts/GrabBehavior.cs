@@ -7,9 +7,13 @@ public class GrabBehavior : MonoBehaviour {
 	RaycastHit hitInfo;
 	Vector3 fwdPos;
 
+	private Rigidbody _self;
+	private bool _grab {get; set;}
+
 	// Use this for initialization
 	void Start () {
-
+		_self = gameObject.GetComponent<Rigidbody>();
+		_grab = false;
 	}
 	
 	// Update is called once per frame
@@ -18,22 +22,26 @@ public class GrabBehavior : MonoBehaviour {
 		var x = Input.GetAxis ("Horizontal") * Time.deltaTime * 150.0f;
 		var z = Input.GetAxis ("Vertical") * Time.deltaTime * 5.0f;
 
+		if(_grab){
+			if(Input.GetKey(KeyCode.I)){
+				hitInfo.collider.transform.position = Vector3.Lerp (hitInfo.collider.transform.position, transform.position, 1 * Time.deltaTime);
+			}else if(Input.GetKey(KeyCode.K)){
+				fwdPos = transform.position + transform.forward * 30f;
+				hitInfo.collider.transform.position = Vector3.Lerp (hitInfo.collider.transform.position, fwdPos, 1 * Time.deltaTime);
+			}
+		}
+
 		// e for grabbing, r for pushing away
 		if (Physics.Raycast (ray, out hitInfo, 100f)) {
-
 			if (hitInfo.collider.tag == "interactable") {
-
-				if (Input.GetKey ("e")) {
-
-					Debug.Log ("Grab");
-					hitInfo.collider.transform.position = Vector3.Lerp (hitInfo.collider.transform.position, transform.position, 2 * Time.deltaTime);
-
-				} else if (Input.GetKey ("r")) {
-
-					Debug.Log ("Drop");
-					fwdPos = transform.position + transform.forward * 30f;
-					hitInfo.collider.transform.position = Vector3.Lerp (hitInfo.collider.transform.position, fwdPos, 1 * Time.deltaTime);
-
+				if (Input.GetKeyDown (KeyCode.E)) {
+					Debug.Log ("Grabbed");
+					_grab = true;
+					hitInfo.collider.transform.SetParent(gameObject.transform);
+				} else if (Input.GetKeyDown (KeyCode.R)) {
+					Debug.Log ("Dropped");
+					_grab = false;
+					hitInfo.collider.transform.parent = null;
 				}
 
 			}
