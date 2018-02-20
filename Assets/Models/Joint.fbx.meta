@@ -1,82 +1,16 @@
 fileFormatVersion: 2
-guid: 542826be14ee3494c8cafc461961900a
-timeCreated: 1519086599
+guid: dcf739cd0089796468b30954ce3d182d
+timeCreated: 1519086600
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: group1
-    100004: group2
-    100006: pCube3
-    100008: pCube4
-    100010: pCube5
-    100012: pCylinder1
-    100014: pSphere1
-    100016: pSphere2
-    100018: pTorus11
-    100020: pTorus12
-    100022: pTorus2
-    100024: pTorus3
-    100026: pTorus7
     400000: //RootNode
-    400002: group1
-    400004: group2
-    400006: pCube3
-    400008: pCube4
-    400010: pCube5
-    400012: pCylinder1
-    400014: pSphere1
-    400016: pSphere2
-    400018: pTorus11
-    400020: pTorus12
-    400022: pTorus2
-    400024: pTorus3
-    400026: pTorus7
-    2100000: blinn2
-    2100002: blinn4
-    2100004: glass
-    2100006: blinn7
-    2100008: blinn6
-    2100010: blinn5
+    2100000: blinn4
     2300000: //RootNode
-    2300002: pCube3
-    2300004: pCube4
-    2300006: pCube5
-    2300008: pCylinder1
-    2300010: pSphere1
-    2300012: pSphere2
-    2300014: pTorus11
-    2300016: pTorus12
-    2300018: pTorus2
-    2300020: pTorus3
-    2300022: pTorus7
     3300000: //RootNode
-    3300002: pCube3
-    3300004: pCube4
-    3300006: pCube5
-    3300008: pCylinder1
-    3300010: pSphere1
-    3300012: pSphere2
-    3300014: pTorus11
-    3300016: pTorus12
-    3300018: pTorus2
-    3300020: pTorus3
-    3300022: pTorus7
-    4300000: pTorus1
-    4300002: pTorus2
-    4300004: pSphere2
-    4300006: pTorus11
-    4300008: pTorus12
-    4300010: pSphere1
-    4300012: pTorus7
-    4300014: pTorus3
-    4300016: pCylinder1
-    4300018: pCube3
-    4300020: pCube5
-    4300022: pCube4
-    7400000: Take 001
-    9500000: //RootNode
+    4300000: pCylinder24
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -151,7 +85,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
