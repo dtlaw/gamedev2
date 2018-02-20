@@ -18,16 +18,16 @@ public class TwoPositionSwitch : MonoBehaviour, BinaryControl {
 	// Messages
 	private void Awake() {
 		_state = false;
-		_pivot.Rotate( -_movementArc, 0, 0 );
+		_pivot.Rotate( -_movementArc / 2, 0, 0 );
 	}
 
 	private void OnMouseDown() {
 		_state = !_state;
 
 		if ( _state == true ) {
-			_pivot.Rotate( _movementArc * 2, 0, 0 );
+			_pivot.Rotate( _movementArc, 0, 0 );
 		} else {
-			_pivot.Rotate( -_movementArc * 2, 0, 0 );
+			_pivot.Rotate( -_movementArc, 0, 0 );
 		}
 	}
 
