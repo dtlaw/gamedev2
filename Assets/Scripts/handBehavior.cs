@@ -16,6 +16,9 @@ public class handBehavior : MonoBehaviour {
 	[SerializeField]
 	private int _muscleForce = 500;
 
+	[SerializeField]
+	private float _dist = 5f;
+
 	// Use this for initialization
 	void Start () {
 		_hand = gameObject.GetComponent<HingeJoint>();
@@ -27,12 +30,10 @@ public class handBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Ray ray = new Ray (this.transform.position, this.transform.up);
-		Debug.DrawRay(this.transform.position, this.transform.up * 10f);
-
-
+		Debug.DrawRay(this.transform.position, this.transform.up * _dist);
 
 		if (Input.GetKeyDown (KeyCode.E)) {
-			if(!_grab && Physics.Raycast (ray, out hitInfo, 20f) && hitInfo.collider.tag == "interactable"){
+			if(!_grab && Physics.Raycast (ray, out hitInfo, _dist) && hitInfo.collider.tag == "interactable"){
 				Debug.Log ("Grabbed");
 				_grab = true;
 				hitInfo.collider.transform.SetParent(gameObject.transform);
