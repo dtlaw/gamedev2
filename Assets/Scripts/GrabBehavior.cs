@@ -6,13 +6,10 @@ public class GrabBehavior : MonoBehaviour {
 
 	RaycastHit hitInfo;
 	Vector3 fwdPos;
-
-	private Rigidbody _self;
 	private bool _grab {get; set;}
 
 	// Use this for initialization
 	void Start () {
-		_self = gameObject.GetComponent<Rigidbody>();
 		_grab = false;
 	}
 	
@@ -45,7 +42,6 @@ public class GrabBehavior : MonoBehaviour {
 				}
 
 			}
-			
 		}
 
 		transform.Rotate (0, x, 0);
