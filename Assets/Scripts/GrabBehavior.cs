@@ -7,7 +7,20 @@ public class GrabBehavior : MonoBehaviour {
 	RaycastHit hitInfo;
 	Vector3 fwdPos;
 	private bool _grab {get; set;}
+	bool on = false;
 	ParticleSystem beam;
+	
+	[ Header( "Tractor buttons" ) ]
+	[ SerializeField ]
+	private Control _beamOn;
+	[ SerializeField ]
+	private Control _beamIn;
+	[ SerializeField ]
+	private Control _beamOut;
+	[ SerializeField ]
+	private Control _beamGrab;
+	[ SerializeField ]
+	private Control _beamDrop;
 
 	// Use this for initialization
 	void Start () {
@@ -22,19 +35,26 @@ public class GrabBehavior : MonoBehaviour {
 		var z = Input.GetAxis ("Vertical") * Time.deltaTime * 5.0f;
 
 		// turn beam on/off
-		if (Input.GetKeyDown ("t")) {
+		// if (Input.GetKeyDown ("t")) {
+		if (_beamOn.IsOn()) {
 			Debug.Log ("on/off");
-			if (beam.isPlaying) {
+			on = !on;
+			/*if (beam.isPlaying) {
 				beam.Stop ();
 			} else {
 				beam.Play ();
-			}
+			}*/
+		}
+		if (on) {
+			beam.Play ();
+		} else {
+			beam.Stop ();
 		}
 			
 		if(_grab){
-			if(Input.GetKey(KeyCode.I)){
+			if(_beamIn.IsOn()){
 				hitInfo.collider.transform.position = Vector3.Lerp (hitInfo.collider.transform.position, transform.position, 1 * Time.deltaTime);
-			}else if(Input.GetKey(KeyCode.K)){
+			}else if(_beamOut.IsOn()){
 				fwdPos = transform.position + transform.forward * 30f;
 				hitInfo.collider.transform.position = Vector3.Lerp (hitInfo.collider.transform.position, fwdPos, 1 * Time.deltaTime);
 			}
@@ -43,11 +63,11 @@ public class GrabBehavior : MonoBehaviour {
 		// e for grabbing, r for pushing away
 		if (Physics.Raycast (ray, out hitInfo, 100f) && beam.isPlaying) {
 			if (hitInfo.collider.tag == "interactable") {
-				if (Input.GetKeyDown (KeyCode.E)) {
+				if (_beamGrab.IsOn()) {
 					Debug.Log ("Grabbed");
 					_grab = true;
 					hitInfo.collider.transform.SetParent(gameObject.transform);
-				} else if (Input.GetKeyDown (KeyCode.R)) {
+				} else if (_beamDrop.IsOn()) {
 					Debug.Log ("Dropped");
 					_grab = false;
 					hitInfo.collider.transform.parent = null;
@@ -56,8 +76,8 @@ public class GrabBehavior : MonoBehaviour {
 			}
 		}
 
-		transform.Rotate (0, x, 0);
-		transform.Translate (0, 0, z);
+		// transform.Rotate (0, x, 0);
+		// transform.Translate (0, 0, z);
 
 
 	}

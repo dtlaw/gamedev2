@@ -7,6 +7,11 @@ public class forearmBehavior : MonoBehaviour {
 	private HingeJoint _forearm;
 	private JointMotor _muscle;
 	private Rigidbody _forearmBody;
+	[ Header( "Arm buttons" ) ]
+	[ SerializeField ]
+	private Control _armLeft;
+	[ SerializeField ]
+	private Control _armRight;
 
 	[SerializeField]
 	private int _muscleForce = 5;
@@ -21,11 +26,14 @@ public class forearmBehavior : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKey(KeyCode.O)){
+		// if(Input.GetKey(KeyCode.O)){
+		if (_armRight.IsOn()) {
 			_forearm.useMotor = true;
 			_muscle.force = _muscleForce;
 			_muscle.targetVelocity = _muscleForce;
-		}else if(Input.GetKey(KeyCode.P)){
+		}
+		// else if(Input.GetKey(KeyCode.P)){
+		else if(_armLeft.IsOn()) {
 			_forearm.useMotor = true;
 			_muscle.force = _muscleForce;
 			_muscle.targetVelocity = -(_muscleForce);

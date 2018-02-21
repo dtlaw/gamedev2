@@ -7,9 +7,15 @@ public class shoulderBehavior : MonoBehaviour {
 	private HingeJoint _shoulder;
 	private JointMotor _muscle;
 	private Rigidbody _shoulderBody;
-
+	
 	[SerializeField]
 	private int _muscleForce = 500;
+	
+	[ Header( "Arm buttons" ) ]
+	[ SerializeField ]
+	private Control _armUp;
+	[ SerializeField ]
+	private Control _armDown;
 
 	// Use this for initialization
 	void Start () {
@@ -20,11 +26,14 @@ public class shoulderBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKey(KeyCode.Q)){
+		// if(Input.GetKey(KeyCode.Q)){
+		if (_armUp.IsOn()) {
 			_shoulder.useMotor = true;
 			_muscle.force = _muscleForce;
 			_muscle.targetVelocity = _muscleForce;
-		}else if(Input.GetKey(KeyCode.W)){
+		}
+		//else if(Input.GetKey(KeyCode.W)){
+		else if (_armDown.IsOn()) {
 			_shoulder.useMotor = true;
 			_muscle.force = _muscleForce;
 			_muscle.targetVelocity = -(_muscleForce);

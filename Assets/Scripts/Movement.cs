@@ -43,6 +43,8 @@ public class Movement : MonoBehaviour {
 	private Control _yawLeft;
 	[ SerializeField ]
 	private Control _yawRight;
+	
+	
 
 
 	// Private variables

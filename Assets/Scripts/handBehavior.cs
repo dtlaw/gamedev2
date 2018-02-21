@@ -18,6 +18,12 @@ public class handBehavior : MonoBehaviour {
 
 	[SerializeField]
 	private float _dist = 5f;
+	
+	[ Header( "Arm buttons" ) ]
+	[ SerializeField ]
+	private Control _armGrab;
+	[ SerializeField ]
+	private Control _armDrop;
 
 	// Use this for initialization
 	void Start () {
@@ -32,7 +38,8 @@ public class handBehavior : MonoBehaviour {
 		Ray ray = new Ray (this.transform.position, this.transform.up);
 		Debug.DrawRay(this.transform.position, this.transform.up * _dist);
 
-		if (Input.GetKeyDown (KeyCode.E)) {
+		// if (Input.GetKeyDown (KeyCode.E)) {
+		if (_armGrab.IsOn()) {
 			if(!_grab && Physics.Raycast (ray, out hitInfo, _dist) && hitInfo.collider.tag == "interactable"){
 				Debug.Log ("Grabbed");
 				_grab = true;
@@ -44,7 +51,8 @@ public class handBehavior : MonoBehaviour {
 			}
 		}
 
-		if(Input.GetKey(KeyCode.R)){
+		// if(Input.GetKey(KeyCode.R)){
+		if (_armDrop.IsOn()) {
 			_hand.useMotor = true;
 			_muscle.force = _muscleForce;
 			_muscle.targetVelocity = _muscleForce;
