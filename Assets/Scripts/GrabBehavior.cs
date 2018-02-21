@@ -45,10 +45,10 @@ public class GrabBehavior : MonoBehaviour {
 				beam.Play ();
 			}*/
 		}
-		if (on) {
-			beam.Play ();
-		} else {
+		if (!on) {
 			beam.Stop ();
+		} else {
+			beam.Play ();
 		}
 			
 		if(_grab){
@@ -72,6 +72,7 @@ public class GrabBehavior : MonoBehaviour {
 				} else if (_beamDrop.IsOn()) {
 					Debug.Log ("Dropped");
 					_grab = false;
+					on = !on;
 					hitInfo.collider.transform.parent = null;
 				}
 
