@@ -22,28 +22,34 @@ public class GrabBehavior : MonoBehaviour {
 	[ SerializeField ]
 	private Control _beamDrop;
 
+	bool _pressed;
+
 	// Use this for initialization
-	void Start () {
+	private void Awake() {
 		beam = transform.GetChild(1).GetComponent<ParticleSystem> ();
 		_grab = false;
+		_pressed = false;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	private void Update() {
 		Ray ray = new Ray (this.transform.position, this.transform.forward);
 		var x = Input.GetAxis ("Horizontal") * Time.deltaTime * 150.0f;
 		var z = Input.GetAxis ("Vertical") * Time.deltaTime * 5.0f;
 
 		// turn beam on/off
 		// if (Input.GetKeyDown ("t")) {
-		if (_beamOn.IsOn()) {
+		if ( _beamOn.IsOn() && !_pressed ) {
 			Debug.Log ("on/off");
 			on = !on;
+			_pressed = true;
 			/*if (beam.isPlaying) {
 				beam.Stop ();
 			} else {
 				beam.Play ();
 			}*/
+		} else if ( !_beamOn.IsOn()) {
+			_pressed = false;
 		}
 		if (!on) {
 			beam.Stop ();
