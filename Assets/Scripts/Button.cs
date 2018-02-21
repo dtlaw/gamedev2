@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Button : MonoBehaviour, BinaryControl {
+public class Button : Control {
 
 	// Exposed variables
 	[ SerializeField ]
@@ -12,32 +12,26 @@ public class Button : MonoBehaviour, BinaryControl {
 	// Private variables
 	private Transform _transform;
 
-	private bool _state;
-
 
 	// Messages
 	private void Awake() {
 		_transform = GetComponent< Transform >();
-		_state = false;
-	}
-
-	private void OnMouseDown() {
-
-		// TODO: Change to actual animation
-		_transform.position -= _transform.up * _depressDepth;
-		_state = true;
-	}
-
-	private void OnMouseUp() {
-
-		// TODO: Change to actual animation
-		_transform.position += _transform.up * _depressDepth;
-		_state = false;
+		_state = 0;
 	}
 
 
 	// Public interface
-	public bool GetState() {
-		return _state;
+	public override void OnClick() {
+
+		// TODO: Change to actual animation
+		_transform.position -= _transform.up * _depressDepth;
+		_state = 1;
+	}
+
+	public override void OnRelease() {
+
+		// TODO: Change to actual animation
+		_transform.position += _transform.up * _depressDepth;
+		_state = 0;
 	}
 }

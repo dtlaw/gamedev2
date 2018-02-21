@@ -2,60 +2,93 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ RequireComponent( typeof( Rigidbody )) ]
 public class Movement : MonoBehaviour {
 
-    //Editor Variables
-    [SerializeField] private float _movementSpeed;
-    [SerializeField] private float _rotationSpeed;
+	// Exposed variables
+	[ Header( "Movement forces" ) ]
+	[ SerializeField ]
+	private float _translationForce;
+	[ SerializeField ]
+	private float _pitchTorque;
+	[ SerializeField ]
+	private float _rollTorque;
+	[ SerializeField ]
+	private float _yawTorque;
 
-    //Private Variables
-    Rigidbody _rb;
+	[ Header( "Movement buttons" ) ]
+	[ SerializeField ]
+	private Control _forward;
+	[ SerializeField ]
+	private Control _backward;
+	[ SerializeField ]
+	private Control _strafeLeft;
+	[ SerializeField ]
+	private Control _strafeRight;
+	[ SerializeField ]
+	private Control _moveUp;
+	[ SerializeField ]
+	private Control _moveDown;
 
-    // Just to get RB
-    private void Awake () {
-        _rb = this.GetComponent<Rigidbody>();
+	[ Space ]
+	[ SerializeField ]
+	private Control _pitchUp;
+	[ SerializeField ]
+	private Control _pitchDown;
+	[ SerializeField ]
+	private Control _rollLeft;
+	[ SerializeField ]
+	private Control _rollRight;
+	[ SerializeField ]
+	private Control _yawLeft;
+	[ SerializeField ]
+	private Control _yawRight;
+
+
+	// Private variables
+	Rigidbody _rigidbody;
+
+
+	// Messages
+	private void Awake() {
+		_rigidbody = GetComponent< Rigidbody >();
 	}
 	
-	private void Update () {
-        if (Input.GetKey(KeyCode.W))
-        {
-            _rb.AddRelativeForce(Vector3.forward * _movementSpeed);
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            _rb.AddRelativeForce(Vector3.back * _movementSpeed);
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            _rb.AddRelativeForce(Vector3.left * _movementSpeed);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            _rb.AddRelativeForce(Vector3.right * _movementSpeed);
-        }
-        if (Input.GetKey(KeyCode.I))
-        {
-            _rb.AddRelativeTorque(_rotationSpeed,0,0);
-        }
-        if (Input.GetKey(KeyCode.K))
-        {
-            _rb.AddRelativeTorque(-_rotationSpeed,0,0);
-        }
-        if (Input.GetKey(KeyCode.J))
-        {
-            _rb.AddRelativeTorque(0,0,_rotationSpeed);
-        }
-        if (Input.GetKey(KeyCode.L))
-        {
-            _rb.AddRelativeTorque(0,0,-_rotationSpeed);
-        }
-        if (Input.GetKey(KeyCode.U))
-        {
-            _rb.AddRelativeTorque(0, -_rotationSpeed,0);
-        }
-        if (Input.GetKey(KeyCode.O))
-        {
-            _rb.AddRelativeTorque(0, _rotationSpeed,0);
-        }
-    }
+	private void Update() {
+		if ( _forward.IsOn()) {
+			_rigidbody.AddRelativeForce( Vector3.forward * _translationForce );
+		} else if ( _backward.IsOn()) {
+			_rigidbody.AddRelativeForce( Vector3.back * _translationForce );
+		}
+
+		if ( _strafeLeft.IsOn()) {
+			_rigidbody.AddRelativeForce( Vector3.left * _translationForce );
+		} else if ( _strafeRight.IsOn()) {
+			_rigidbody.AddRelativeForce( Vector3.right * _translationForce );
+		}
+
+		if ( _moveUp.IsOn()) {
+			_rigidbody.AddRelativeForce( Vector3.up * _translationForce );
+		} else if ( _moveDown.IsOn()) {
+			_rigidbody.AddRelativeForce( Vector3.down * _translationForce );
+		}
+
+		if ( _pitchUp.IsOn()) {
+			_rigidbody.AddRelativeTorque( -_pitchTorque, 0, 0 );
+		} else if ( _pitchDown.IsOn()) {
+			_rigidbody.AddRelativeTorque( _pitchTorque, 0, 0 );
+		}
+
+		if ( _rollLeft.IsOn()) {
+			_rigidbody.AddRelativeTorque( 0, 0, _rollTorque );
+		} else if ( _rollRight.IsOn()) {
+			_rigidbody.AddRelativeTorque( 0, 0, -_rollTorque );
+		}
+
+		if ( _yawLeft.IsOn()) {
+			_rigidbody.AddRelativeTorque( 0, _yawTorque, 0);
+		} else if ( _yawRight.IsOn()) {
+			_rigidbody.AddRelativeTorque( 0, -_yawTorque, 0 );
+		}
+	}
 }

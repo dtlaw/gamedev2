@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lever : MonoBehaviour, AnalogControl {
+public class Lever : Control {
 
 	// Exposed variables
 	[ SerializeField ]
@@ -25,7 +25,6 @@ public class Lever : MonoBehaviour, AnalogControl {
 	private Transform _transform;
 	private Camera _camera;
 
-	private float _state;
 	private bool _gripped;
 
 
@@ -61,15 +60,13 @@ public class Lever : MonoBehaviour, AnalogControl {
 		}
 	}
 
-	private void OnMouseDown() {
+
+	// Public interface
+	public override void OnClick() {
 		_gripped = true;
 	}
 
-	private void OnMouseUp() {
+	public override void OnRelease() {
 		_gripped = false;
-	}
-
-	public float GetState() {
-		return _state;
 	}
 }

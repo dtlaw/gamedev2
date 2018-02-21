@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TwoPositionSwitch : MonoBehaviour, BinaryControl {
+public class TwoPositionSwitch : Control {
 
 	// Exposed variables
 	[ SerializeField ]
@@ -11,29 +11,23 @@ public class TwoPositionSwitch : MonoBehaviour, BinaryControl {
 	private Transform _pivot;
 
 
-	// Private variables
-	private bool _state;
-
-
 	// Messages
 	private void Awake() {
-		_state = false;
+		_state = 0;
 		_pivot.Rotate( -_movementArc / 2, 0, 0 );
-	}
-
-	private void OnMouseDown() {
-		_state = !_state;
-
-		if ( _state == true ) {
-			_pivot.Rotate( _movementArc, 0, 0 );
-		} else {
-			_pivot.Rotate( -_movementArc, 0, 0 );
-		}
 	}
 
 
 	// Public interface
-	public bool GetState() {
-		return _state;
+	public override void OnClick() {
+		if ( _state > 0 ) {
+			_state = 0;
+			_pivot.Rotate( _movementArc, 0, 0 );
+		} else {
+			_state = 1;
+			_pivot.Rotate( -_movementArc, 0, 0 );
+		}
 	}
+
+	public override void OnRelease() {}
 }
