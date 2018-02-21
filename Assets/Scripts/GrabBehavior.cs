@@ -52,11 +52,13 @@ public class GrabBehavior : MonoBehaviour {
 		}
 			
 		if(_grab){
-			if(_beamIn.IsOn()){
-				hitInfo.collider.transform.position = Vector3.Lerp (hitInfo.collider.transform.position, transform.position, 1 * Time.deltaTime);
-			}else if(_beamOut.IsOn()){
-				fwdPos = transform.position + transform.forward * 30f;
-				hitInfo.collider.transform.position = Vector3.Lerp (hitInfo.collider.transform.position, fwdPos, 1 * Time.deltaTime);
+			if (hitInfo.collider.tag == "interactable") {
+				if(_beamIn.IsOn()){
+					hitInfo.collider.transform.position = Vector3.Lerp (hitInfo.collider.transform.position, transform.position, 1 * Time.deltaTime);
+				}else if(_beamOut.IsOn()){
+					fwdPos = transform.position + transform.forward * 10f;
+					hitInfo.collider.transform.position = Vector3.Lerp (hitInfo.collider.transform.position, fwdPos, 1 * Time.deltaTime);
+				}
 			}
 		}
 
