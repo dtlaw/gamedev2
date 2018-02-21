@@ -6,13 +6,12 @@ public class GrabBehavior : MonoBehaviour {
 
 	RaycastHit hitInfo;
 	Vector3 fwdPos;
-
-	private Rigidbody _self;
 	private bool _grab {get; set;}
+	ParticleSystem beam;
 
 	// Use this for initialization
 	void Start () {
-		_self = gameObject.GetComponent<Rigidbody>();
+		beam = transform.GetChild(1).GetComponent<ParticleSystem> ();
 		_grab = false;
 	}
 	
@@ -22,6 +21,16 @@ public class GrabBehavior : MonoBehaviour {
 		var x = Input.GetAxis ("Horizontal") * Time.deltaTime * 150.0f;
 		var z = Input.GetAxis ("Vertical") * Time.deltaTime * 5.0f;
 
+		// turn beam on/off
+		if (Input.GetKeyDown ("t")) {
+			Debug.Log ("on/off");
+			if (beam.isPlaying) {
+				beam.Stop ();
+			} else {
+				beam.Play ();
+			}
+		}
+			
 		if(_grab){
 			if(Input.GetKey(KeyCode.I)){
 				hitInfo.collider.transform.position = Vector3.Lerp (hitInfo.collider.transform.position, transform.position, 1 * Time.deltaTime);
@@ -32,7 +41,7 @@ public class GrabBehavior : MonoBehaviour {
 		}
 
 		// e for grabbing, r for pushing away
-		if (Physics.Raycast (ray, out hitInfo, 100f)) {
+		if (Physics.Raycast (ray, out hitInfo, 100f) && beam.isPlaying) {
 			if (hitInfo.collider.tag == "interactable") {
 				if (Input.GetKeyDown (KeyCode.E)) {
 					Debug.Log ("Grabbed");
@@ -45,7 +54,6 @@ public class GrabBehavior : MonoBehaviour {
 				}
 
 			}
-			
 		}
 
 		transform.Rotate (0, x, 0);
