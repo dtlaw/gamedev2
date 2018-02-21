@@ -1975,7 +1975,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _translationForce: 1
-  _rotationTorque: 0.1
+  _pitchTorque: 0.01
+  _rollTorque: 0.1
+  _yawTorque: 0.1
   _forward: {fileID: 1370861928}
   _backward: {fileID: 642299493}
   _strafeLeft: {fileID: 1419086521}
@@ -1997,7 +1999,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
