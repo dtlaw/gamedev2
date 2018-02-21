@@ -9,6 +9,9 @@ public class DoorControl : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        _door.gameObject.SetActive(false);
+        if(collision.collider.gameObject.tag == "PowerCube")
+        {
+            _door.gameObject.SetActive(false);
+        }
     }
 }
