@@ -2,60 +2,67 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ RequireComponent( typeof( Rigidbody )) ]
 public class Movement : MonoBehaviour {
 
-    //Editor Variables
-    [SerializeField] private float _movementSpeed;
-    [SerializeField] private float _rotationSpeed;
+    // Exposed variables
+    [ SerializeField ] private float _movementSpeed;
+    [ SerializeField ] private float _rotationSpeed;
 
-    //Private Variables
-    Rigidbody _rb;
+    [ Header( "Movement buttons" ) ]
+    [ SerializeField ]
+    private Control _forwardButton;
+    [ SerializeField ]
+    private Control _backwardButton;
 
-    // Just to get RB
-    private void Awake () {
-        _rb = this.GetComponent<Rigidbody>();
+
+    // Private variables
+    Rigidbody _rigidbody;
+
+
+    // Messages
+    private void Awake() {
+        _rigidbody = GetComponent< Rigidbody >();
 	}
 	
-	private void Update () {
-        if (Input.GetKey(KeyCode.W))
-        {
-            _rb.AddRelativeForce(Vector3.forward * _movementSpeed);
+	private void Update() {
+        if ( _forwardButton.IsOn()) {
+            _rigidbody.AddRelativeForce(Vector3.forward * _movementSpeed);
+        } else if ( _backwardButton.IsOn()) {
+            _rigidbody.AddRelativeForce(Vector3.back * _movementSpeed);
         }
-        if (Input.GetKey(KeyCode.S))
-        {
-            _rb.AddRelativeForce(Vector3.back * _movementSpeed);
-        }
+
         if (Input.GetKey(KeyCode.A))
         {
-            _rb.AddRelativeForce(Vector3.left * _movementSpeed);
+            _rigidbody.AddRelativeForce(Vector3.left * _movementSpeed);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            _rb.AddRelativeForce(Vector3.right * _movementSpeed);
+            _rigidbody.AddRelativeForce(Vector3.right * _movementSpeed);
         }
         if (Input.GetKey(KeyCode.I))
         {
-            _rb.AddRelativeTorque(_rotationSpeed,0,0);
+            _rigidbody.AddRelativeTorque(_rotationSpeed,0,0);
         }
         if (Input.GetKey(KeyCode.K))
         {
-            _rb.AddRelativeTorque(-_rotationSpeed,0,0);
+            _rigidbody.AddRelativeTorque(-_rotationSpeed,0,0);
         }
         if (Input.GetKey(KeyCode.J))
         {
-            _rb.AddRelativeTorque(0,0,_rotationSpeed);
+            _rigidbody.AddRelativeTorque(0,0,_rotationSpeed);
         }
         if (Input.GetKey(KeyCode.L))
         {
-            _rb.AddRelativeTorque(0,0,-_rotationSpeed);
+            _rigidbody.AddRelativeTorque(0,0,-_rotationSpeed);
         }
         if (Input.GetKey(KeyCode.U))
         {
-            _rb.AddRelativeTorque(0, -_rotationSpeed,0);
+            _rigidbody.AddRelativeTorque(0, -_rotationSpeed,0);
         }
         if (Input.GetKey(KeyCode.O))
         {
-            _rb.AddRelativeTorque(0, _rotationSpeed,0);
+            _rigidbody.AddRelativeTorque(0, _rotationSpeed,0);
         }
     }
 }
