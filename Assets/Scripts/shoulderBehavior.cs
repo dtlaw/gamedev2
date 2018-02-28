@@ -28,16 +28,19 @@ public class shoulderBehavior : MonoBehaviour {
 	void Update () {
 		// if(Input.GetKey(KeyCode.Q)){
 		if (_armUp.IsOn()) {
+			_shoulderBody.constraints = RigidbodyConstraints.None;
 			_shoulder.useMotor = true;
 			_muscle.force = _muscleForce;
 			_muscle.targetVelocity = _muscleForce;
 		}
 		//else if(Input.GetKey(KeyCode.W)){
 		else if (_armDown.IsOn()) {
+			_shoulderBody.constraints = RigidbodyConstraints.None;
 			_shoulder.useMotor = true;
 			_muscle.force = _muscleForce;
 			_muscle.targetVelocity = -(_muscleForce);
 		}else{
+			_shoulderBody.constraints = RigidbodyConstraints.FreezeAll;
 			_shoulder.useMotor = false;
 			_muscle.force = 0;
 		}
