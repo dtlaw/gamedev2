@@ -16,6 +16,10 @@ public class shoulderBehavior : MonoBehaviour {
 	private Control _armUp;
 	[ SerializeField ]
 	private Control _armDown;
+	[ SerializeField ]
+	private Control _yawLeft;
+	[ SerializeField ]
+	private Control _yawRight;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +30,7 @@ public class shoulderBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
 		// if(Input.GetKey(KeyCode.Q)){
 		if (_armUp.IsOn()) {
 			_shoulderBody.constraints = RigidbodyConstraints.None;
@@ -39,8 +44,10 @@ public class shoulderBehavior : MonoBehaviour {
 			_shoulder.useMotor = true;
 			_muscle.force = _muscleForce;
 			_muscle.targetVelocity = -(_muscleForce);
+		}else if(_yawLeft.IsOn() || _yawRight.IsOn()){
+			_shoulderBody.constraints = RigidbodyConstraints.None;
 		}else{
-			_shoulderBody.constraints = RigidbodyConstraints.FreezeAll;
+			_shoulderBody.constraints = RigidbodyConstraints.FreezePosition;
 			_shoulder.useMotor = false;
 			_muscle.force = 0;
 		}

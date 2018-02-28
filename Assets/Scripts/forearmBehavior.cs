@@ -30,6 +30,7 @@ public class forearmBehavior : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		
 		// if(Input.GetKey(KeyCode.O)){
 		if (_armRight.IsOn()) {
 			_forearmBody.constraints = RigidbodyConstraints.None;
@@ -43,14 +44,12 @@ public class forearmBehavior : MonoBehaviour {
 			_forearm.useMotor = true;
 			_muscle.force = _muscleForce;
 			_muscle.targetVelocity = -(_muscleForce);
-		}else{
-			_forearmBody.constraints = RigidbodyConstraints.FreezeAll;
+		} else if(_armUp.IsOn() || _armDown.IsOn()){
+			_forearmBody.constraints = RigidbodyConstraints.None;
+		} else{
+			_forearmBody.constraints = RigidbodyConstraints.FreezePosition;
 			_forearm.useMotor = false;
 			_muscle.force = 0;
-		}
-
-		if(_armUp.IsOn() || _armDown.IsOn()){
-			_forearmBody.constraints = RigidbodyConstraints.None;
 		}
 
 		_forearm.motor = _muscle;
