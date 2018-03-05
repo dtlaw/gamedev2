@@ -9,6 +9,8 @@ public class GrabBehavior : MonoBehaviour {
 	private bool _grab {get; set;}
 	bool on = false;
 	ParticleSystem beam;
+	private bool _interact;
+
 	
 	[ Header( "Tractor buttons" ) ]
 	[ SerializeField ]
@@ -22,36 +24,39 @@ public class GrabBehavior : MonoBehaviour {
 	[ SerializeField ]
 	private Control _beamDrop;
 
-	bool _pressed;
+	private bool _pressed;
 
 	// Use this for initialization
 	private void Awake() {
 		beam = transform.GetChild(1).GetComponent<ParticleSystem> ();
 		_grab = false;
 		_pressed = false;
+		_interact = false;
 	}
 	
+	public bool Grab() {
+		return _grab;
+	}
+
+	public bool Interact() {
+		return _interact;
+	}
+
 	// Update is called once per frame
 	private void Update() {
-		Ray ray = new Ray (this.transform.position, this.transform.forward);
-		var x = Input.GetAxis ("Horizontal") * Time.deltaTime * 150.0f;
-		var z = Input.GetAxis ("Vertical") * Time.deltaTime * 5.0f;
+		Ray ray = new Ray (beam.transform.position, beam.transform.forward);
 
 		// turn beam on/off
-		// if (Input.GetKeyDown ("t")) {
 		if ( _beamOn.IsOn() && !_pressed ) {
 			Debug.Log ("on/off");
 			on = !on;
 			_pressed = true;
-			/*if (beam.isPlaying) {
-				beam.Stop ();
-			} else {
-				beam.Play ();
-			}*/
 		} else if ( !_beamOn.IsOn()) {
 			_pressed = false;
 		}
+
 		if (!on) {
+			_grab = false;
 			beam.Stop ();
 		} else {
 			beam.Play ();
@@ -66,28 +71,33 @@ public class GrabBehavior : MonoBehaviour {
 					hitInfo.collider.transform.position = Vector3.Lerp (hitInfo.collider.transform.position, fwdPos, 1 * Time.deltaTime);
 				}
 			}
-		}
+		} 
 
-		// e for grabbing, r for pushing away
-		if (Physics.Raycast (ray, out hitInfo, 100f) && beam.isPlaying) {
-			if (hitInfo.collider.tag == "interactable") {
+		// grabbing and dropping
+		if (Physics.Raycast (ray, out hitInfo) && beam.isPlaying) {
+			if (hitInfo.collider.tag == "interactable" || _grab ) {
+				_interact = true;
+				// grab
 				if (_beamGrab.IsOn()) {
+					_grab = true;
 					Debug.Log ("Grabbed");
 					_grab = true;
 					hitInfo.collider.transform.SetParent(gameObject.transform);
-				} else if (_beamDrop.IsOn()) {
+				} 
+				// drop
+				else if (_beamDrop.IsOn()) {
+					_grab = false;
 					Debug.Log ("Dropped");
 					_grab = false;
+					transform.GetChild(2).parent = null;
+					// hitInfo.collider.transform.parent = null;
 					on = !on;
-					hitInfo.collider.transform.parent = null;
-				}
-
+				} 
+			} else {
+				_interact = false;
 			}
+		} else {
+			_interact = false;
 		}
-
-		// transform.Rotate (0, x, 0);
-		// transform.Translate (0, 0, z);
-
-
 	}
 }
