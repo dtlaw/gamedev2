@@ -6,16 +6,11 @@ public class Button : Control {
 
 	// Exposed variables
 	[ SerializeField ]
-	private float _depressDepth;
-
-
-	// Private variables
-	private Transform _transform;
+	private Animator _animator;
 
 
 	// Messages
 	private void Awake() {
-		_transform = GetComponent< Transform >();
 		_state = 0;
 	}
 
@@ -24,14 +19,14 @@ public class Button : Control {
 	public override void OnClick() {
 
 		// TODO: Change to actual animation
-		_transform.position -= _transform.up * _depressDepth;
+		_animator.SetFloat( "NormalizedTime", 1 );
 		_state = 1;
 	}
 
 	public override void OnRelease() {
 
 		// TODO: Change to actual animation
-		_transform.position += _transform.up * _depressDepth;
+		_animator.SetFloat( "NormalizedTime", 0 );
 		_state = 0;
 	}
 }
