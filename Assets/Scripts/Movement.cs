@@ -110,9 +110,9 @@ public class Movement : MonoBehaviour {
 		}
 
 		if ( _yawLeft.IsOn()) {
-			_rigidbody.AddRelativeTorque( 0, _yawTorque, 0);
+			_rigidbody.AddRelativeTorque( 0, -_yawTorque, 0);
 		} else if ( _yawRight.IsOn()) {
-			_rigidbody.AddRelativeTorque( 0, -_yawTorque, 0 );
+			_rigidbody.AddRelativeTorque( 0, _yawTorque, 0 );
 		}
 	}
 }

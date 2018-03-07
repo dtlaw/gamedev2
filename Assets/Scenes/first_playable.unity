@@ -38,8 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00052601413, g: 0.00029482835, b: 0.00022798934,
-    a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -6528,7 +6527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _translationForce: 0.5
-  _pitchTorque: 0.01
+  _pitchTorque: 0.1
   _rollTorque: 0.1
   _yawTorque: 0.1
   _forward: {fileID: 359337941}
@@ -6561,6 +6560,7 @@ MonoBehaviour:
   _clickableMask:
     serializedVersion: 2
     m_Bits: 256
+  _scrollThreshold: 0
 --- !u!54 &411912743
 Rigidbody:
   m_ObjectHideFlags: 0

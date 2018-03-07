@@ -47,7 +47,7 @@ public class CockpitInteraction : MonoBehaviour {
 					}
 				}
 			}
-		} else if ( !leftClick ) {
+		} else if ( Input.GetMouseButtonUp( 0 )) {
 			if ( _control ) {
 				_control.OnRelease();
 				_control = null;
