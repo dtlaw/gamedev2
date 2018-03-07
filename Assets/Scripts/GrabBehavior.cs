@@ -63,13 +63,13 @@ public class GrabBehavior : MonoBehaviour {
 		}
 			
 		if(_grab){
-			if (hitInfo.collider.tag == "interactable") {
-				if(_beamIn.IsOn()){
-					hitInfo.collider.transform.position = Vector3.Lerp (hitInfo.collider.transform.position, transform.position, 1 * Time.deltaTime);
-				}else if(_beamOut.IsOn()){
-					fwdPos = transform.position + transform.forward * 10f;
-					hitInfo.collider.transform.position = Vector3.Lerp (hitInfo.collider.transform.position, fwdPos, 1 * Time.deltaTime);
-				}
+			if(_beamIn.IsOn()){
+				Debug.Log("In");
+				transform.GetChild(2).transform.position = Vector3.Lerp (transform.GetChild(2).transform.position, transform.position, 1 * Time.deltaTime);
+			}else if(_beamOut.IsOn()){
+				Debug.Log("Out");
+				fwdPos = transform.position + transform.forward * 10f;
+				transform.GetChild(2).transform.position = Vector3.Lerp (transform.GetChild(2).transform.position, fwdPos, 1 * Time.deltaTime);
 			}
 		} 
 
@@ -79,14 +79,12 @@ public class GrabBehavior : MonoBehaviour {
 				_interact = true;
 				// grab
 				if (_beamGrab.IsOn()) {
-					_grab = true;
 					Debug.Log ("Grabbed");
 					_grab = true;
 					hitInfo.collider.transform.SetParent(gameObject.transform);
 				} 
 				// drop
 				else if (_beamDrop.IsOn()) {
-					_grab = false;
 					Debug.Log ("Dropped");
 					_grab = false;
 					transform.GetChild(2).parent = null;
