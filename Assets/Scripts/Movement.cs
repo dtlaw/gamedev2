@@ -43,8 +43,17 @@ public class Movement : MonoBehaviour {
 	private Control _yawLeft;
 	[ SerializeField ]
 	private Control _yawRight;
-	
-	
+
+	[ SerializeField ]
+	private GameObject _shoulder;
+	[ SerializeField ]
+	private GameObject _forearm;
+	[ SerializeField ]
+	private GameObject _hand;
+
+	private Rigidbody _shoulderbody;
+	private Rigidbody _forearmbody;
+	private Rigidbody _handbody;
 
 
 	// Private variables
@@ -54,9 +63,22 @@ public class Movement : MonoBehaviour {
 	// Messages
 	private void Awake() {
 		_rigidbody = GetComponent< Rigidbody >();
+		_shoulderbody = _shoulder.GetComponent<Rigidbody>();
+		_forearmbody = _forearm.GetComponent<Rigidbody>();
+		_handbody = _hand.GetComponent<Rigidbody>();
 	}
-	
+
 	private void Update() {
+		if(_shoulder.GetComponent<shoulderBehavior>().use == false &&
+			_forearm.GetComponent<forearmBehavior>().use == false){
+			_shoulderbody.constraints = RigidbodyConstraints.FreezePosition;
+			_forearmbody.constraints = RigidbodyConstraints.FreezePosition;
+			_handbody.constraints = RigidbodyConstraints.FreezePosition;	
+		}else{
+			_shoulderbody.constraints = RigidbodyConstraints.None;
+			_forearmbody.constraints = RigidbodyConstraints.None;
+			_handbody.constraints = RigidbodyConstraints.None;
+		}
 		if ( _forward.IsOn()) {
 			_rigidbody.AddRelativeForce( Vector3.forward * _translationForce );
 		} else if ( _backward.IsOn()) {
