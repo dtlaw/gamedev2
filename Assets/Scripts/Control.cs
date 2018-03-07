@@ -11,6 +11,8 @@ public abstract class Control : MonoBehaviour {
 	// Public interface
 	public abstract void OnClick();
 	public abstract void OnRelease();
+	public abstract void OnScrollUp();
+	public abstract void OnScrollDown();
 
 	public float GetState() {
 		return _state;

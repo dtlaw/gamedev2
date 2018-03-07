@@ -28,4 +28,7 @@ public class TwoPositionSwitch : Control {
 	}
 
 	public override void OnRelease() {}
+
+	public override void OnScrollUp() {}
+	public override void OnScrollDown() {}
 }

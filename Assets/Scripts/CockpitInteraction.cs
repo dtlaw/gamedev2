@@ -7,6 +7,8 @@ public class CockpitInteraction : MonoBehaviour {
 	// Exposed variables
 	[ SerializeField ]
 	private LayerMask _clickableMask;
+	[ SerializeField ]
+	private float _scrollThreshold;
 
 
 	// Private variables
@@ -21,7 +23,10 @@ public class CockpitInteraction : MonoBehaviour {
 	}
 	
 	private void Update() {
-		if ( Input.GetMouseButtonDown( 0 )) {
+		bool leftClick = Input.GetMouseButtonDown( 0 );
+		bool scrollUp = Input.GetAxis( "Mouse ScrollWheel" ) > _scrollThreshold;
+		bool scrollDown = Input.GetAxis( "Mouse ScrollWheel" ) < -_scrollThreshold;
+		if ( leftClick || scrollUp || scrollDown ) {
 			Ray r = _camera.ScreenPointToRay( Input.mousePosition );
 
 			RaycastHit hit;
@@ -31,10 +36,18 @@ public class CockpitInteraction : MonoBehaviour {
 				_control = g.GetComponent< Control >();
 
 				if ( _control ) {
-					_control.OnClick();
+					if ( leftClick ) {
+						_control.OnClick();
+					}
+
+					if ( scrollUp ) {
+						_control.OnScrollUp();
+					} else if ( scrollDown ) {
+						_control.OnScrollDown();
+					}
 				}
 			}
-		} else if ( Input.GetMouseButtonUp( 0 )) {
+		} else if ( !leftClick ) {
 			if ( _control ) {
 				_control.OnRelease();
 				_control = null;
