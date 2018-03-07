@@ -13,6 +13,7 @@ public class handBehavior : MonoBehaviour {
 	private HingeJoint _hand;
 	private JointMotor _muscle;
 	private Rigidbody _handBody;
+	private Animation _grabbing;
 
 	[SerializeField]
 	private int _muscleForce = 500;
@@ -35,6 +36,7 @@ public class handBehavior : MonoBehaviour {
 		_grab = false;
 		_pressed = false;
 		_interact = false;
+		_grabbing = gameObject.GetComponent<Animation>();
 	}
 	
 	public bool Grab() {
@@ -58,10 +60,16 @@ public class handBehavior : MonoBehaviour {
 			if(!_grab && Physics.Raycast (ray, out hitInfo, _dist) && hitInfo.collider.tag == "interactable"){
 				Debug.Log ("Grabbed");
 				_grab = true;
+				_grabbing["grab"].speed = 1;
+				_grabbing["grab"].time = 0f;
+				_grabbing.Play("grab");
 				hitInfo.collider.transform.SetParent(gameObject.transform);
 			} else if (_grab){
 				Debug.Log ("Dropped");
 				_grab = false;
+				_grabbing["grab"].speed = -1;
+				_grabbing["grab"].time = _grabbing["grab"].length;
+				_grabbing.Play("grab");
 				transform.GetChild(2).parent = null;
 				// hitInfo.collider.transform.parent = null;
 			}
