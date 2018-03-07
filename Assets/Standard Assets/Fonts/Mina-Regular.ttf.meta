@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 21a947631ea6d3b41b26d12caf8da808
+timeCreated: 1520384641
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Mina
+  fontNames:
+  - Mina
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 210b330e899ba7e419daf82f0bdc9488, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
