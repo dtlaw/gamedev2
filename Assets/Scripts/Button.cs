@@ -25,7 +25,4 @@ public class Button : Control {
 		_animator.SetFloat( "NormalizedTime", 0 );
 		_state = 0;
 	}
-
-	public override void OnScrollUp() {}
-	public override void OnScrollDown() {}
 }
