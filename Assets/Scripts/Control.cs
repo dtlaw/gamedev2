@@ -9,10 +9,10 @@ public abstract class Control : MonoBehaviour {
 
 
 	// Public interface
-	public abstract void OnClick();
-	public abstract void OnRelease();
-	public abstract void OnScrollUp();
-	public abstract void OnScrollDown();
+	public virtual void OnClick() {}
+	public virtual void OnRelease() {}
+	public virtual void OnScrollUp() {}
+	public virtual void OnScrollDown() {}
 
 	public float GetState() {
 		return _state;

@@ -26,9 +26,4 @@ public class TwoPositionSwitch : Control {
 			_animator.SetFloat( "NormalizedTime", 1 );
 		}
 	}
-
-	public override void OnRelease() {}
-
-	public override void OnScrollUp() {}
-	public override void OnScrollDown() {}
 }

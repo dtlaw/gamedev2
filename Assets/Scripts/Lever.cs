@@ -69,7 +69,4 @@ public class Lever : Control {
 	public override void OnRelease() {
 		_gripped = false;
 	}
-
-	public override void OnScrollUp() {}
-	public override void OnScrollDown() {}
 }

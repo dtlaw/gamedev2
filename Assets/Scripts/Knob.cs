@@ -43,9 +43,6 @@ public class Knob : Control {
 		SetStateRotation();
 	}
 
-	public override void OnClick() {}
-	public override void OnRelease() {}
-
 
 	// Private interface
 	private float NormalizedState() {
@@ -54,7 +51,7 @@ public class Knob : Control {
 
 	private void SetStateRotation() {
 
-		// TODO: Convert normalized state into a rotation between min and max value
+		// Convert normalized state into a rotation between min and max value
 		float normalizedState = ( _state - _minValue ) / ( _maxValue - _minValue );
 		float rotationRange = _endRotation - _startRotation;
 		float rotation = rotationRange * normalizedState;
