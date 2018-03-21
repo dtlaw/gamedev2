@@ -61,6 +61,25 @@ public class Movement : MonoBehaviour
     [SerializeField]
     private GameObject _hand;
 
+    [Header("Thruster Particles")]
+    [SerializeField]
+    private ParticleSystem _thruster1;
+    [SerializeField]
+    private ParticleSystem _thruster2;
+    [SerializeField]
+    private ParticleSystem _thruster3;
+    [SerializeField]
+    private ParticleSystem _thruster4;
+    [SerializeField]
+    private ParticleSystem _thruster5;
+    [SerializeField]
+    private ParticleSystem _thruster6;
+    [SerializeField]
+    private ParticleSystem _thruster7;
+    [SerializeField]
+    private ParticleSystem _thruster8;
+    
+
     private Rigidbody _shoulderbody;
     private Rigidbody _forearmbody;
     private Rigidbody _handbody;
@@ -82,6 +101,14 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
+        _thruster1.Stop();
+        _thruster2.Stop();
+        _thruster3.Stop();
+        _thruster4.Stop();
+        _thruster5.Stop();
+        _thruster6.Stop();
+        _thruster7.Stop();
+        _thruster8.Stop();
         if (_shoulder.GetComponent<shoulderBehavior>().use == false &&
             _forearm.GetComponent<forearmBehavior>().use == false &&
             _wrist.GetComponent<wristBehavior>().use == false)
@@ -101,55 +128,103 @@ public class Movement : MonoBehaviour
         if (_forward.IsOn())
         {
             _rigidbody.AddRelativeForce(Vector3.forward * _translationForce);
+            _thruster5.Play();
+            _thruster6.Play();
+            _thruster7.Play();
+            _thruster8.Play();
         }
         else if (_backward.IsOn())
         {
             _rigidbody.AddRelativeForce(Vector3.back * _translationForce);
+            _thruster1.Play();
+            _thruster2.Play();
+            _thruster3.Play();
+            _thruster4.Play();
         }
 
         if (_strafeLeft.IsOn())
         {
             _rigidbody.AddRelativeForce(Vector3.left * _translationForce);
+            _thruster1.Play();
+            _thruster2.Play();
+            _thruster5.Play();
+            _thruster6.Play();
         }
         else if (_strafeRight.IsOn())
         {
             _rigidbody.AddRelativeForce(Vector3.right * _translationForce);
+            _thruster3.Play();
+            _thruster4.Play();
+            _thruster7.Play();
+            _thruster8.Play();
         }
 
         if (_moveUp.IsOn())
         {
             _rigidbody.AddRelativeForce(Vector3.up * _translationForce);
+            _thruster2.Play();
+            _thruster4.Play();
+            _thruster6.Play();
+            _thruster8.Play();
         }
         else if (_moveDown.IsOn())
         {
             _rigidbody.AddRelativeForce(Vector3.down * _translationForce);
+            _thruster1.Play();
+            _thruster3.Play();
+            _thruster5.Play();
+            _thruster7.Play();
         }
 
         if (_pitchUp.IsOn())
         {
             _rigidbody.AddRelativeTorque(-_pitchTorque, 0, 0);
+            _thruster2.Play();
+            _thruster4.Play();
+            _thruster5.Play();
+            _thruster7.Play();
         }
         else if (_pitchDown.IsOn())
         {
             _rigidbody.AddRelativeTorque(_pitchTorque, 0, 0);
+            _thruster1.Play();
+            _thruster3.Play();
+            _thruster6.Play();
+            _thruster8.Play();
         }
 
         if (_rollLeft.IsOn())
         {
             _rigidbody.AddRelativeTorque(0, 0, _rollTorque);
+            _thruster2.Play();
+            _thruster6.Play();
+            _thruster3.Play();
+            _thruster7.Play();
         }
         else if (_rollRight.IsOn())
         {
             _rigidbody.AddRelativeTorque(0, 0, -_rollTorque);
+            _thruster1.Play();
+            _thruster5.Play();
+            _thruster4.Play();
+            _thruster8.Play();
         }
 
         if (_yawLeft.IsOn())
         {
             _rigidbody.AddRelativeTorque(0, -_yawTorque, 0);
+            _thruster1.Play();
+            _thruster2.Play();
+            _thruster7.Play();
+            _thruster8.Play();
         }
         else if (_yawRight.IsOn())
         {
             _rigidbody.AddRelativeTorque(0, _yawTorque, 0);
+            _thruster3.Play();
+            _thruster4.Play();
+            _thruster5.Play();
+            _thruster6.Play();
         }
 
         if (_panic.IsOn())
