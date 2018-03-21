@@ -6592,6 +6592,7 @@ MonoBehaviour:
   _pitchTorque: 0.1
   _rollTorque: 0.1
   _yawTorque: 0.1
+  _panicSpeed: 0
   _forward: {fileID: 359337941}
   _backward: {fileID: 605801944}
   _strafeLeft: {fileID: 15545783}
@@ -6604,6 +6605,7 @@ MonoBehaviour:
   _rollRight: {fileID: 1676997924}
   _yawLeft: {fileID: 500224203}
   _yawRight: {fileID: 2017013528}
+  _panic: {fileID: 0}
   _shoulder: {fileID: 558165409}
   _forearm: {fileID: 1689644708}
   _wrist: {fileID: 608032805}
@@ -13821,7 +13823,6 @@ GameObject:
   - component: {fileID: 1512550743}
   - component: {fileID: 1512550742}
   - component: {fileID: 1512550745}
-  - component: {fileID: 1512550744}
   m_Layer: 0
   m_Name: pCylinder14
   m_TagString: Untagged
@@ -13887,40 +13888,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1512550740}
   m_Mesh: {fileID: 4300002, guid: 228af918f6971254b9106265b30ef14d, type: 3}
---- !u!59 &1512550744
-HingeJoint:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1512550740}
-  m_ConnectedBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 0.070895985, z: 0}
-  m_Axis: {x: 0, y: 1, z: 0}
-  m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.000000058364513, y: 15.618989, z: 1.4366188}
-  m_UseSpring: 0
-  m_Spring:
-    spring: 0
-    damper: 0
-    targetPosition: 0
-  m_UseMotor: 0
-  m_Motor:
-    targetVelocity: 0
-    force: 0
-    freeSpin: 0
-  m_UseLimits: 0
-  m_Limits:
-    min: 0
-    max: 0
-    bounciness: 0
-    bounceMinVelocity: 0.2
-    contactDistance: 0
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!54 &1512550745
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16889,15 +16856,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4267911933315220, guid: 71e186f3388913d45a425139fd23231a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.88
+      value: 0.086
       objectReference: {fileID: 0}
     - target: {fileID: 4267911933315220, guid: 71e186f3388913d45a425139fd23231a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 15.68
+      value: 16.311
       objectReference: {fileID: 0}
     - target: {fileID: 4267911933315220, guid: 71e186f3388913d45a425139fd23231a, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 6.05
+      value: 2.332
       objectReference: {fileID: 0}
     - target: {fileID: 4267911933315220, guid: 71e186f3388913d45a425139fd23231a, type: 2}
       propertyPath: m_LocalRotation.x
