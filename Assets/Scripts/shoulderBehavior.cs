@@ -29,13 +29,13 @@ public class shoulderBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (_armUp.IsOn()) {
+		if (_armDown.IsOn()) {
 			_shoulderBody.constraints = RigidbodyConstraints.None;
 			_shoulder.useMotor = true;
 			_muscle.force = _muscleForce;
 			_muscle.targetVelocity = _muscleForce;
 			use = true;
-		}else if (_armDown.IsOn()) {
+		}else if (_armUp.IsOn()) {
 			_shoulderBody.constraints = RigidbodyConstraints.None;
 			_shoulder.useMotor = true;
 			_muscle.force = _muscleForce;

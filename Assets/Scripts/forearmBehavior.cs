@@ -17,6 +17,9 @@ public class forearmBehavior : MonoBehaviour {
 	[SerializeField]
 	private Control _armDown;
 
+	[ SerializeField ]
+	private GameObject _wrist;
+	private Rigidbody _wristbody;
 
 	[SerializeField]
 	private int _muscleForce = 5;
@@ -30,11 +33,17 @@ public class forearmBehavior : MonoBehaviour {
 		_muscle = _forearm.motor;
 		_forearm.motor = _muscle;
 		use = false;
+		_wristbody = _wrist.GetComponent<Rigidbody>();
 	}
 
 	// Update is called once per frame
 	void Update () {
-		
+		/*
+		if(_wrist.GetComponent<wristBehavior>().use == false){
+			_wristbody.constraints = RigidbodyConstraints.FreezeRotation;
+		}else{
+			_wristbody.constraints = RigidbodyConstraints.None;
+		}*/
 		// if(Input.GetKey(KeyCode.O)){
 		if (_armRight.IsOn()) {
 			_forearmBody.constraints = RigidbodyConstraints.None;

@@ -49,12 +49,14 @@ public class Movement : MonoBehaviour {
 	[ SerializeField ]
 	private GameObject _forearm;
 	[ SerializeField ]
+	private GameObject _wrist;
+	[ SerializeField ]
 	private GameObject _hand;
 
 	private Rigidbody _shoulderbody;
 	private Rigidbody _forearmbody;
 	private Rigidbody _handbody;
-
+	private Rigidbody _wristbody;
 
 	// Private variables
 	Rigidbody _rigidbody;
@@ -66,18 +68,22 @@ public class Movement : MonoBehaviour {
 		_shoulderbody = _shoulder.GetComponent<Rigidbody>();
 		_forearmbody = _forearm.GetComponent<Rigidbody>();
 		_handbody = _hand.GetComponent<Rigidbody>();
+		_wristbody = _wrist.GetComponent<Rigidbody>();
 	}
 
 	private void Update() {
 		if(_shoulder.GetComponent<shoulderBehavior>().use == false &&
-			_forearm.GetComponent<forearmBehavior>().use == false){
+			_forearm.GetComponent<forearmBehavior>().use == false && 
+			_wrist.GetComponent<wristBehavior>().use == false){
 			_shoulderbody.constraints = RigidbodyConstraints.FreezePosition;
 			_forearmbody.constraints = RigidbodyConstraints.FreezePosition;
-			_handbody.constraints = RigidbodyConstraints.FreezePosition;	
+			_handbody.constraints = RigidbodyConstraints.FreezePosition;
+			_wristbody.constraints = RigidbodyConstraints.FreezePosition;
 		}else{
 			_shoulderbody.constraints = RigidbodyConstraints.None;
 			_forearmbody.constraints = RigidbodyConstraints.None;
 			_handbody.constraints = RigidbodyConstraints.None;
+			_wristbody.constraints = RigidbodyConstraints.None;
 		}
 		if ( _forward.IsOn()) {
 			_rigidbody.AddRelativeForce( Vector3.forward * _translationForce );
