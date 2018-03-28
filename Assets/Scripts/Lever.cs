@@ -32,7 +32,7 @@ public class Lever : Control {
 		_camera = Camera.main;
 
 		_state = _defaultValue;
-		_animator.SetFloat( "NormalizedTime", _defaultValue / _maxValue - _minValue );
+		_animator.SetFloat( "NormalizedTime", ( _defaultValue - _minValue ) / ( _maxValue - _minValue ));
 		_gripped = false;
 	}
 	
@@ -51,9 +51,9 @@ public class Lever : Control {
 				Vector3 projection = Vector3.Project( mousePos - start, track );
 				projection = Vector3.ClampMagnitude( projection, track.magnitude );
 
-				_state = projection.magnitude / track.magnitude;
+				_state = (( projection.magnitude / track.magnitude ) * ( _maxValue - _minValue )) + _minValue;
 
-				_animator.SetFloat( "NormalizedTime", _state / _maxValue - _minValue );
+				_animator.SetFloat( "NormalizedTime", ( _state - _minValue ) / ( _maxValue - _minValue ));
 			}
 		}
 	}
