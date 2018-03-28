@@ -231,7 +231,7 @@ public class Movement : MonoBehaviour
         {
             Vector3 rest = new Vector3(0, 0, 0);
             _rigidbody.velocity = Vector3.Lerp(_rigidbody.velocity, rest, _panicSpeed);
-            _rigidbody.angularVelocity = Vector3.Lerp(_rigidbody.velocity, rest, _panicSpeed);
+            _rigidbody.angularVelocity = Vector3.Lerp(_rigidbody.angularVelocity, rest, _panicSpeed);
         }
     }
 }
