@@ -61,7 +61,7 @@ public class handBehavior : MonoBehaviour {
 				_grabbing[ "grab" ].time = 0;
 				_grabbing.Play( "grab" );
 				hitInfo.collider.transform.SetParent( gameObject.transform );
-				_grabbedTransform = gameObject.transform;
+				_grabbedTransform = hitInfo.collider.transform;
 			} else if ( _grab ) {
 				Debug.Log ( "Dropped" );
 				_grab = false;
@@ -99,5 +99,10 @@ public class handBehavior : MonoBehaviour {
 
 	public bool Interact() {
 		return _interact;
+	}
+
+	public void setGrabFalse() {
+		_grab = false;
+		_grabbedTransform.parent = null;
 	}
 }

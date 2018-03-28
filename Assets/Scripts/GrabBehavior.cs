@@ -10,6 +10,7 @@ public class GrabBehavior : MonoBehaviour {
 	bool on = false;
 	ParticleSystem beam;
 	private bool _interact;
+	private Transform _grabbedTransform;
 
 	
 	[ Header( "Tractor buttons" ) ]
@@ -32,6 +33,7 @@ public class GrabBehavior : MonoBehaviour {
 		_grab = false;
 		_pressed = false;
 		_interact = false;
+		_grabbedTransform = null;
 	}
 	
 	public bool Grab() {
@@ -82,12 +84,13 @@ public class GrabBehavior : MonoBehaviour {
 					Debug.Log ("Grabbed");
 					_grab = true;
 					hitInfo.collider.transform.SetParent(gameObject.transform);
+					_grabbedTransform = hitInfo.collider.transform;
 				} 
 				// drop
 				else if (_beamDrop.IsOn()) {
 					Debug.Log ("Dropped");
 					_grab = false;
-					transform.GetChild(2).parent = null;
+					_grabbedTransform.parent = null;
 					// hitInfo.collider.transform.parent = null;
 					on = !on;
 				} 
