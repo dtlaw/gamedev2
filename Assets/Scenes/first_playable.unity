@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00052601413, g: 0.00029482835, b: 0.00022798934,
+  m_IndirectSpecularColor: {r: 0.00058935035, g: 0.00029489523, b: 0.00023177723,
     a: 1}
 --- !u!157 &3
 LightmapSettings:
@@ -4536,6 +4536,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f1c7ac4e754d1284b80d8d8024925c0c, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1103067642 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114653911885455558, guid: 2dbc10447777ddd4fbb1b232493c4082,
+    type: 2}
+  m_PrefabInternal: {fileID: 1453706748}
+  m_Script: {fileID: 11500000, guid: 52211bddbf6d1174cb9b52abe91ffbc8, type: 3}
 --- !u!1 &1108232745
 GameObject:
   m_ObjectHideFlags: 0
@@ -6406,6 +6412,34 @@ Prefab:
     - target: {fileID: 1841139128344882, guid: 2dbc10447777ddd4fbb1b232493c4082, type: 2}
       propertyPath: m_Name
       value: Cockpit
+      objectReference: {fileID: 0}
+    - target: {fileID: 114283644478755628, guid: 2dbc10447777ddd4fbb1b232493c4082,
+        type: 2}
+      propertyPath: _armDown
+      value: 
+      objectReference: {fileID: 1103067642}
+    - target: {fileID: 114283644478755628, guid: 2dbc10447777ddd4fbb1b232493c4082,
+        type: 2}
+      propertyPath: _armUp
+      value: 
+      objectReference: {fileID: 2013113305}
+    - target: {fileID: 1890408366026516, guid: 2dbc10447777ddd4fbb1b232493c4082, type: 2}
+      propertyPath: m_Name
+      value: Up
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652598254608966, guid: 2dbc10447777ddd4fbb1b232493c4082, type: 2}
+      propertyPath: m_Name
+      value: Down
+      objectReference: {fileID: 0}
+    - target: {fileID: 59302811526073992, guid: 2dbc10447777ddd4fbb1b232493c4082,
+        type: 2}
+      propertyPath: m_UseLimits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909309970455164, guid: 2dbc10447777ddd4fbb1b232493c4082,
+        type: 2}
+      propertyPath: _muscleForce
+      value: 125
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2dbc10447777ddd4fbb1b232493c4082, type: 2}
@@ -8390,6 +8424,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1988082967}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2013113305 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114289637763102524, guid: 2dbc10447777ddd4fbb1b232493c4082,
+    type: 2}
+  m_PrefabInternal: {fileID: 1453706748}
+  m_Script: {fileID: 11500000, guid: 52211bddbf6d1174cb9b52abe91ffbc8, type: 3}
 --- !u!1 &2015550053
 GameObject:
   m_ObjectHideFlags: 0
