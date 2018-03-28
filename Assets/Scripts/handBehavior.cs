@@ -57,17 +57,17 @@ public class handBehavior : MonoBehaviour {
 			if( !_grab && Physics.Raycast( ray, out hitInfo, _dist ) && hitInfo.collider.tag == "interactable" ){
 				Debug.Log( "Grabbed" );
 				_grab = true;
-				_grabbing[ "grab" ].speed = 1;
-				_grabbing[ "grab" ].time = 0;
-				_grabbing.Play( "grab" );
+				_grabbing[ "Take 001" ].speed = 1;
+				_grabbing[ "Take 001" ].time = 0;
+				_grabbing.Play( "Take 001" );
 				hitInfo.collider.transform.SetParent( gameObject.transform );
 				_grabbedTransform = hitInfo.collider.transform;
 			} else if ( _grab ) {
 				Debug.Log ( "Dropped" );
 				_grab = false;
-				_grabbing[ "grab" ].speed = -1;
-				_grabbing[ "grab" ].time = _grabbing[ "grab" ].length;
-				_grabbing.Play( "grab" );
+				_grabbing[ "Take 001" ].speed = -1;
+				_grabbing[ "Take 001" ].time = _grabbing[ "Take 001" ].length;
+				_grabbing.Play( "Take 001" );
 
 				// FIXME:
 				_grabbedTransform.parent = null;

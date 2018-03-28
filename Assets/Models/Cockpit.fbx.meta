@@ -1,80 +1,49 @@
 fileFormatVersion: 2
-guid: 8647b82bfb0cb194d95fa6f9e37e81cb
-timeCreated: 1519087980
+guid: b4abba4e2d872254eafcd6ee5fa5e57e
+timeCreated: 1522204377
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: group1
-    100004: group2
-    100006: pCube3
-    100008: pCube4
-    100010: pCube5
-    100012: pCylinder1
-    100014: pSphere1
-    100016: pSphere2
-    100018: pTorus11
-    100020: pTorus12
-    100022: pTorus2
-    100024: pTorus3
-    100026: pTorus7
+    100002: group2
+    100004: group3
+    100006: pCube5
+    100008: pCylinder1
+    100010: pTorus11
+    100012: pTorus12
+    100014: pTorus3
     400000: //RootNode
-    400002: group1
-    400004: group2
-    400006: pCube3
-    400008: pCube4
-    400010: pCube5
-    400012: pCylinder1
-    400014: pSphere1
-    400016: pSphere2
-    400018: pTorus11
-    400020: pTorus12
-    400022: pTorus2
-    400024: pTorus3
-    400026: pTorus7
-    2100000: blinn2
-    2100002: blinn4
-    2100004: glass
-    2100006: blinn7
-    2100008: blinn6
-    2100010: blinn5
+    400002: group2
+    400004: group3
+    400006: pCube5
+    400008: pCylinder1
+    400010: pTorus11
+    400012: pTorus12
+    400014: pTorus3
+    2100000: glass
+    2100002: blinn8
+    2100004: blinn4
+    2100006: blinn5
+    2100008: blinn7
     2300000: //RootNode
-    2300002: pCube3
-    2300004: pCube4
-    2300006: pCube5
-    2300008: pCylinder1
-    2300010: pSphere1
-    2300012: pSphere2
-    2300014: pTorus11
-    2300016: pTorus12
-    2300018: pTorus2
-    2300020: pTorus3
-    2300022: pTorus7
+    2300002: pCube5
+    2300004: pCylinder1
+    2300006: pTorus11
+    2300008: pTorus12
+    2300010: pTorus3
     3300000: //RootNode
-    3300002: pCube3
-    3300004: pCube4
-    3300006: pCube5
-    3300008: pCylinder1
-    3300010: pSphere1
-    3300012: pSphere2
-    3300014: pTorus11
-    3300016: pTorus12
-    3300018: pTorus2
-    3300020: pTorus3
-    3300022: pTorus7
-    4300000: pTorus1
-    4300002: pTorus2
-    4300004: pSphere2
-    4300006: pTorus11
-    4300008: pTorus12
-    4300010: pSphere1
-    4300012: pTorus7
-    4300014: pTorus3
-    4300016: pCylinder1
-    4300018: pCube3
-    4300020: pCube5
-    4300022: pCube4
+    3300002: pCube5
+    3300004: pCylinder1
+    3300006: pTorus11
+    3300008: pTorus12
+    3300010: pTorus3
+    4300000: pSphere3
+    4300002: pTorus3
+    4300004: pCylinder1
+    4300006: pCube5
+    4300008: pTorus11
+    4300010: pTorus12
     7400000: Take 001
     9500000: //RootNode
   externalObjects: {}
