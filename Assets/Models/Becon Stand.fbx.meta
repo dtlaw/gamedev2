@@ -1,29 +1,16 @@
 fileFormatVersion: 2
-guid: 33583fdcbd129864da21275d2cef5dc1
-timeCreated: 1519088978
+guid: 07a60d2faeeca574fa7a0eda3020b21a
+timeCreated: 1522197556
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: pCone4
-    100002: pCone7
-    100004: pCube3
-    100006: //RootNode
-    400000: pCone4
-    400002: pCone7
-    400004: pCube3
-    400006: //RootNode
-    2100000: lambert1
-    2100002: blinn2
-    2300000: pCone4
-    2300002: pCone7
-    2300004: pCube3
-    3300000: pCone4
-    3300002: pCone7
-    3300004: pCube3
-    4300000: pCone7
-    4300002: pCube3
-    4300004: pCone4
+    100000: //RootNode
+    400000: //RootNode
+    2100000: Tractor_Beam_blinn3
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: pCylinder12
   externalObjects: {}
   materials:
     importMaterials: 1
