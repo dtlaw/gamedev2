@@ -1,29 +1,38 @@
 fileFormatVersion: 2
-guid: 33583fdcbd129864da21275d2cef5dc1
-timeCreated: 1519088978
+guid: dd53f2b5a1a58d04fbfb4233ed5303ab
+timeCreated: 1522201067
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: pCone4
     100002: pCone7
-    100004: pCube3
-    100006: //RootNode
+    100004: pCone7_pCube3
+    100006: pCube3
+    100008: pCylinder25
+    100010: transform27
+    100012: transform28
+    100014: transform29
+    100016: transform30
+    100018: Upper
+    100020: //RootNode
     400000: pCone4
     400002: pCone7
-    400004: pCube3
-    400006: //RootNode
-    2100000: lambert1
-    2100002: blinn2
-    2300000: pCone4
-    2300002: pCone7
-    2300004: pCube3
-    3300000: pCone4
-    3300002: pCone7
-    3300004: pCube3
-    4300000: pCone7
-    4300002: pCube3
-    4300004: pCone4
+    400004: pCone7_pCube3
+    400006: pCube3
+    400008: pCylinder25
+    400010: transform27
+    400012: transform28
+    400014: transform29
+    400016: transform30
+    400018: Upper
+    400020: //RootNode
+    2100000: blinn2
+    2100002: lambert1
+    2100004: blinn4
+    2300000: pCone7_pCube3
+    3300000: pCone7_pCube3
+    4300000: pCone7_pCube3
   externalObjects: {}
   materials:
     importMaterials: 1

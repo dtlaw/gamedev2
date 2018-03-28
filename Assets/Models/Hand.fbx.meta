@@ -1,53 +1,124 @@
 fileFormatVersion: 2
-guid: 228af918f6971254b9106265b30ef14d
-timeCreated: 1519088978
+guid: 0acbab573982065408dd26ac25f05d0a
+timeCreated: 1522201066
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: group1
-    100002: //RootNode
-    100004: pCylinder14
-    100006: pCylinder20
-    100008: polySurface5
-    100010: polySurface6
-    100012: polySurface7
-    100014: polySurface8
-    400000: group1
-    400002: //RootNode
-    400004: pCylinder14
-    400006: pCylinder20
-    400008: polySurface5
-    400010: polySurface6
-    400012: polySurface7
-    400014: polySurface8
-    2100000: lambert1
-    2100002: blinn2
+    100000: //RootNode
+    100002: pCone10
+    100004: pCone2
+    100006: pCube17
+    100008: pCube18
+    100010: pCylinder21
+    100012: pCylinder22
+    100014: pCylinder23
+    100016: pCylinder29
+    100018: polySurface10
+    100020: polySurface11
+    100022: polySurface12
+    100024: polySurface13
+    100026: polySurface13 1
+    100028: polySurface14
+    100030: polySurface15
+    100032: polySurface16
+    100034: polySurface17
+    100036: polySurface18
+    100038: polySurface19
+    100040: polySurface2
+    100042: polySurface20
+    100044: polySurface21
+    100046: polySurface22
+    100048: polySurface23
+    100050: polySurface3
+    100052: polySurface9
+    100054: polySurface9 1
+    100056: transform25
+    100058: transform26
+    100060: transform44
+    100062: transform45
+    100064: transform46
+    100066: transform47
+    100068: transform48
+    100070: transform49
+    100072: transform50
+    100074: transform51
+    100076: transform52
+    100078: transform53
+    100080: transform54
+    100082: transform55
+    100084: transform56
+    100086: transform57
+    100088: transform58
+    100090: transform59
+    100092: transform60
+    100094: transform61
+    400000: //RootNode
+    400002: pCone10
+    400004: pCone2
+    400006: pCube17
+    400008: pCube18
+    400010: pCylinder21
+    400012: pCylinder22
+    400014: pCylinder23
+    400016: pCylinder29
+    400018: polySurface10
+    400020: polySurface11
+    400022: polySurface12
+    400024: polySurface13
+    400026: polySurface13 1
+    400028: polySurface14
+    400030: polySurface15
+    400032: polySurface16
+    400034: polySurface17
+    400036: polySurface18
+    400038: polySurface19
+    400040: polySurface2
+    400042: polySurface20
+    400044: polySurface21
+    400046: polySurface22
+    400048: polySurface23
+    400050: polySurface3
+    400052: polySurface9
+    400054: polySurface9 1
+    400056: transform25
+    400058: transform26
+    400060: transform44
+    400062: transform45
+    400064: transform46
+    400066: transform47
+    400068: transform48
+    400070: transform49
+    400072: transform50
+    400074: transform51
+    400076: transform52
+    400078: transform53
+    400080: transform54
+    400082: transform55
+    400084: transform56
+    400086: transform57
+    400088: transform58
+    400090: transform59
+    400092: transform60
+    400094: transform61
+    2100000: blinn2
+    2100002: lambert1
     2100004: blinn4
-    2300000: //RootNode
-    2300002: pCylinder14
-    2300004: pCylinder20
-    2300006: polySurface5
-    2300008: polySurface6
-    2300010: polySurface7
-    2300012: polySurface8
-    3300000: //RootNode
-    3300002: pCylinder14
-    3300004: pCylinder20
-    3300006: polySurface5
-    3300008: polySurface6
-    3300010: polySurface7
-    3300012: polySurface8
-    4300000: Hand
-    4300002: pCylinder14
-    4300004: pCylinder20
-    4300006: polySurface8
-    4300008: polySurface5
-    4300010: polySurface7
-    4300012: polySurface6
-    7400000: grab
-    9500000: //RootNode
-    11100000: //RootNode
+    2300000: polySurface14
+    2300002: polySurface15
+    2300004: polySurface16
+    2300006: polySurface17
+    2300008: polySurface9
+    3300000: polySurface14
+    3300002: polySurface15
+    3300004: polySurface16
+    3300006: polySurface17
+    3300008: polySurface9
+    4300000: polySurface9
+    4300002: polySurface15
+    4300004: polySurface14
+    4300006: polySurface16
+    4300008: polySurface17
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -74,35 +145,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: grab
-      takeName: Take 001
-      firstFrame: 1
-      lastFrame: 120
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -150,7 +193,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 1
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
