@@ -32156,7 +32156,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: fd163937efb47ce47a1bdc4fc85f3b50, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.64
+      value: -7.56
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fd163937efb47ce47a1bdc4fc85f3b50, type: 3}
       propertyPath: m_LocalPosition.y
@@ -32213,6 +32213,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd163937efb47ce47a1bdc4fc85f3b50, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &563635424 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: fd163937efb47ce47a1bdc4fc85f3b50, type: 3}
+  m_PrefabInternal: {fileID: 563635423}
 --- !u!1001 &566772576
 Prefab:
   m_ObjectHideFlags: 0
@@ -75407,7 +75411,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: fd163937efb47ce47a1bdc4fc85f3b50, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.67
+      value: 7.54
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fd163937efb47ce47a1bdc4fc85f3b50, type: 3}
       propertyPath: m_LocalPosition.y
@@ -79057,7 +79061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goal: {fileID: 36945147}
-  door: {fileID: 0}
+  door: {fileID: 563635424}
 --- !u!108 &1996334048
 Light:
   m_ObjectHideFlags: 0
@@ -79115,7 +79119,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: fd163937efb47ce47a1bdc4fc85f3b50, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.65
+      value: -7.59
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fd163937efb47ce47a1bdc4fc85f3b50, type: 3}
       propertyPath: m_LocalPosition.y
