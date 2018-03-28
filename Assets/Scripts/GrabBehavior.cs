@@ -67,11 +67,11 @@ public class GrabBehavior : MonoBehaviour {
 		if(_grab){
 			if(_beamIn.IsOn()){
 				Debug.Log("In");
-				transform.GetChild(2).transform.position = Vector3.Lerp (transform.GetChild(2).transform.position, transform.position, 1 * Time.deltaTime);
+				_grabbedTransform.position = Vector3.Lerp (_grabbedTransform.position, transform.position, 1 * Time.deltaTime);
 			}else if(_beamOut.IsOn()){
 				Debug.Log("Out");
 				fwdPos = transform.position + transform.forward * 10f;
-				transform.GetChild(2).transform.position = Vector3.Lerp (transform.GetChild(2).transform.position, fwdPos, 1 * Time.deltaTime);
+				_grabbedTransform.position = Vector3.Lerp (_grabbedTransform.position, fwdPos, 1 * Time.deltaTime);
 			}
 		} 
 
