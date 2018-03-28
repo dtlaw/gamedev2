@@ -192,7 +192,7 @@ public class Movement : MonoBehaviour
 
 		if ( _panic.IsOn()) {
 			_rigidbody.velocity = Vector3.Lerp( _rigidbody.velocity, Vector3.zero, _panicSpeed );
-			_rigidbody.angularVelocity = Vector3.Lerp( _rigidbody.velocity, Vector3.zero, _panicSpeed );
+			_rigidbody.angularVelocity = Vector3.Lerp( _rigidbody.angularVelocity, Vector3.zero, _panicSpeed );
 		}
 	}
 }
