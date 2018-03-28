@@ -29,6 +29,12 @@ public class Knob : Control {
 		_transform = GetComponent< Transform >();
 
 		_state = _defaultValue;
+
+		float normalizedState = ( _state - _minValue ) / ( _maxValue - _minValue );
+		float rotationRange = _endRotation - _startRotation;
+		float rotation = rotationRange * normalizedState;
+
+		_transform.localRotation = Quaternion.Euler( 0, _startRotation + rotation, 0 );
 	}
 
 
