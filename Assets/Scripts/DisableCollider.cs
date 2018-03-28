@@ -11,12 +11,12 @@ public class DisableCollider : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		// if (GameObject.Find("Hand").GetComponent<handBehavior>().Grab() ||
-		// 	GameObject.Find("laser_beam").GetComponent<GrabBehavior>().Grab()) {
-		// 	_collider.enabled = false;
-		// } else {
-		// 	_collider.enabled = true;
-		// }
-		_collider.enabled = false;
+		if (GameObject.Find("Hand").GetComponent<handBehavior>().Grab() ||
+			GameObject.Find("laser_beam").GetComponent<GrabBehavior>().Grab()) {
+			_collider.enabled = false;
+		} else {
+			_collider.enabled = true;
+		}
+		// _collider.enabled = false;
 	}
 }

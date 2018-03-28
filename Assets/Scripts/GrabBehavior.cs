@@ -44,6 +44,11 @@ public class GrabBehavior : MonoBehaviour {
 		return _interact;
 	}
 
+	public void setGrabFalse() {
+		_grab = false;
+		_grabbedTransform.parent = null;
+	}
+
 	// Update is called once per frame
 	private void Update() {
 		Ray ray = new Ray (beam.transform.position, beam.transform.forward);
