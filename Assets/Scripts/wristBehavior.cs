@@ -17,6 +17,8 @@ public class wristBehavior : MonoBehaviour {
 	void Start () {
 		_wrist = gameObject.GetComponent<HingeJoint>();
 		_wristBody = gameObject.GetComponent<Rigidbody>();
+		_wristBody.constraints = RigidbodyConstraints.FreezeRotationX;
+		_wristBody.constraints = RigidbodyConstraints.FreezeRotationY;
 		_muscle = _wrist.motor;
 		_wrist.motor = _muscle;
 		use = false;

@@ -23,6 +23,8 @@ public class shoulderBehavior : MonoBehaviour {
 	void Start () {
 		_shoulder = gameObject.GetComponent<HingeJoint>();
 		_shoulderBody = gameObject.GetComponent<Rigidbody>();
+		_shoulderBody.constraints = RigidbodyConstraints.FreezeRotationY;
+		_shoulderBody.constraints = RigidbodyConstraints.FreezeRotationZ;
 		_muscle = _shoulder.motor;
 		use = false;
 	}
