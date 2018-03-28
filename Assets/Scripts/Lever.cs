@@ -6,6 +6,8 @@ public class Lever : Control {
 
 	// Exposed variables
 	[ SerializeField ]
+	private Animator _animator;
+	[ SerializeField ]
 	private float _minValue;
 	[ SerializeField ]
 	private float _maxValue;
@@ -15,10 +17,6 @@ public class Lever : Control {
 	private Transform _startPoint;
 	[ SerializeField ]
 	private Transform _endPoint;
-	[ SerializeField ]
-	private float _movementArc;
-	[ SerializeField ]
-	private Transform _pivot;
 
 
 	// Private variables
@@ -34,9 +32,8 @@ public class Lever : Control {
 		_camera = Camera.main;
 
 		_state = _defaultValue;
+		_animator.SetFloat( "NormalizedTime", _defaultValue / _maxValue - _minValue );
 		_gripped = false;
-
-		_pivot.Rotate( -_movementArc / 2, 0, 0 );
 	}
 	
 	private void Update() {
@@ -55,7 +52,8 @@ public class Lever : Control {
 				projection = Vector3.ClampMagnitude( projection, track.magnitude );
 
 				_state = projection.magnitude / track.magnitude;
-				_pivot.localRotation = Quaternion.Euler( _movementArc * ( _state - 0.5f ), 0, 0 );
+
+				_animator.SetFloat( "NormalizedTime", _state / _maxValue - _minValue );
 			}
 		}
 	}
