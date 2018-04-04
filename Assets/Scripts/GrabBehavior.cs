@@ -88,7 +88,7 @@ public class GrabBehavior : MonoBehaviour {
 				if (_beamGrab.IsOn()) {
 					Debug.Log ("Grabbed");
 					_grab = true;
-					hitInfo.collider.transform.SetParent(gameObject.transform);
+					hitInfo.collider.transform.SetParent(gameObject.transform.parent);
 					_grabbedTransform = hitInfo.collider.transform;
 				} 
 				// drop

@@ -17,6 +17,5 @@ public class DisableCollider : MonoBehaviour {
 		} else {
 			_collider.enabled = true;
 		}
-		// _collider.enabled = false;
 	}
 }
