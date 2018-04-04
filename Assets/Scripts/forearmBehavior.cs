@@ -25,8 +25,6 @@ public class forearmBehavior : MonoBehaviour {
 	void Start () {
 		_forearm = gameObject.GetComponent<HingeJoint>();
 		_forearmBody = gameObject.GetComponent<Rigidbody>();
-		_forearmBody.constraints = RigidbodyConstraints.FreezeRotationX;
-		_forearmBody.constraints = RigidbodyConstraints.FreezeRotationY;
 		_muscle = _forearm.motor;
 		_forearm.motor = _muscle;
 		use = false;
@@ -43,7 +41,7 @@ public class forearmBehavior : MonoBehaviour {
 		}*/
 		// if(Input.GetKey(KeyCode.O)){
 		if (_armRight.IsOn()) {
-			_forearmBody.constraints = RigidbodyConstraints.None;
+			//_forearmBody.constraints = RigidbodyConstraints.None;
 			_forearm.useMotor = true;
 			_muscle.force = _muscleForce;
 			_muscle.targetVelocity = _muscleForce;
@@ -51,7 +49,7 @@ public class forearmBehavior : MonoBehaviour {
 		}
 		// else if(Input.GetKey(KeyCode.P)){
 		else if(_armLeft.IsOn()) {
-			_forearmBody.constraints = RigidbodyConstraints.None;
+			//_forearmBody.constraints = RigidbodyConstraints.None;
 			_forearm.useMotor = true;
 			_muscle.force = _muscleForce;
 			_muscle.targetVelocity = -(_muscleForce);

@@ -23,8 +23,6 @@ public class shoulderBehavior : MonoBehaviour {
 	void Start () {
 		_shoulder = gameObject.GetComponent<HingeJoint>();
 		_shoulderBody = gameObject.GetComponent<Rigidbody>();
-		_shoulderBody.constraints = RigidbodyConstraints.FreezeRotationY;
-		_shoulderBody.constraints = RigidbodyConstraints.FreezeRotationZ;
 		_muscle = _shoulder.motor;
 		use = false;
 	}
@@ -32,13 +30,13 @@ public class shoulderBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (_armDown.IsOn()) {
-			_shoulderBody.constraints = RigidbodyConstraints.None;
+			//_shoulderBody.constraints = RigidbodyConstraints.None;
 			_shoulder.useMotor = true;
 			_muscle.force = _muscleForce;
 			_muscle.targetVelocity = _muscleForce;
 			use = true;
 		}else if (_armUp.IsOn()) {
-			_shoulderBody.constraints = RigidbodyConstraints.None;
+			//_shoulderBody.constraints = RigidbodyConstraints.None;
 			_shoulder.useMotor = true;
 			_muscle.force = _muscleForce;
 			_muscle.targetVelocity = -(_muscleForce);

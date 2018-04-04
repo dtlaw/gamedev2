@@ -40,6 +40,9 @@ public class handBehavior : MonoBehaviour {
 		_pressed = false;
 		_grabbing = gameObject.GetComponent< Animation >();
 		_grabbedTransform = null;
+		_grabbing[ "Take 001" ].speed = -1;
+		_grabbing[ "Take 001" ].time = _grabbing[ "Take 001" ].length;
+		_grabbing.Play( "Take 001" );
 	}
 	
 	private void Update() {
