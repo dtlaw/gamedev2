@@ -9,6 +9,7 @@ public class CameraMovement : MonoBehaviour {
 	private float xRotation = 0f;
     private float yRotation = 0f;
     private Quaternion initialRotation;
+    private Quaternion cameraRotation;
     private float maxY = 0f;
     private float maxX = 0f;
     public float maxRotation = 50f;
@@ -22,6 +23,8 @@ public class CameraMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		cameraRotation = transform.parent.rotation * initialRotation; 
+
 		if (Input.GetMouseButton(1))
         {
             currentMX = Input.mousePosition.x;
@@ -42,8 +45,9 @@ public class CameraMovement : MonoBehaviour {
 
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(xRotation, yRotation, transform.rotation.z)), 7 * Time.deltaTime);
 
-        } else {
-        	transform.rotation = Quaternion.Lerp(transform.rotation, initialRotation, 7 * Time.deltaTime);
+        } 
+        else {
+        	transform.rotation = Quaternion.Lerp(transform.rotation, cameraRotation, 7 * Time.deltaTime);
         }
 	}
 }
