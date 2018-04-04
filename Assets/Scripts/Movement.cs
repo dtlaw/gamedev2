@@ -3,69 +3,68 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class Movement : MonoBehaviour
-{
+public class Movement : MonoBehaviour {
 	// Exposed variables
-	[Header("Movement forces")]
-	[SerializeField]
+	[ Header( "Movement forces" ) ]
+	[ SerializeField ]
 	private float _translationForce;
-	[SerializeField]
+	[ SerializeField ]
 	private float _pitchTorque;
-	[SerializeField]
+	[ SerializeField ]
 	private float _rollTorque;
-	[SerializeField]
+	[ SerializeField ]
 	private float _yawTorque;
-	[SerializeField]
+	[ SerializeField ]
 	private float _panicSpeed;
 
-	[Header("Movement buttons")]
-	[SerializeField]
+	[ Header( "Movement buttons" ) ]
+	[ SerializeField ]
 	private Control _forwardAxis;
-	[SerializeField]
+	[ SerializeField ]
 	private Control _strafeAxis;
-	[SerializeField]
+	[ SerializeField ]
 	private Control _moveUp;
-	[SerializeField]
+	[ SerializeField ]
 	private Control _moveDown;
 
-	[Space]
-	[SerializeField]
+	[ Space ]
+	[ SerializeField ]
 	private Control _pitchUp;
-	[SerializeField]
+	[ SerializeField ]
 	private Control _pitchDown;
-	[SerializeField]
+	[ SerializeField ]
 	private Control _rollAxis;
-	[SerializeField]
+	[ SerializeField ]
 	private Control _yawAxis;
 
-	[Space]
-	[SerializeField]
+	[ Space ]
+	[ SerializeField ]
 	private Control _panic;
 
-	[Space]
-	[SerializeField]
+	[ Space ]
+	[ SerializeField ]
 	private GameObject _shoulder;
-	[SerializeField]
+	[ SerializeField ]
 	private GameObject _forearm;
-	[SerializeField]
+	[ SerializeField ]
 	private GameObject _hand;
 
-	[Header("Thruster Particles")]
-	[SerializeField]
+	[ Header( "Thruster Particles" ) ]
+	[ SerializeField ]
 	private ParticleSystem _thruster1;
-	[SerializeField]
+	[ SerializeField ]
 	private ParticleSystem _thruster2;
-	[SerializeField]
+	[ SerializeField ]
 	private ParticleSystem _thruster3;
-	[SerializeField]
+	[ SerializeField ]
 	private ParticleSystem _thruster4;
-	[SerializeField]
+	[ SerializeField ]
 	private ParticleSystem _thruster5;
-	[SerializeField]
+	[ SerializeField ]
 	private ParticleSystem _thruster6;
-	[SerializeField]
+	[ SerializeField ]
 	private ParticleSystem _thruster7;
-	[SerializeField]
+	[ SerializeField ]
 	private ParticleSystem _thruster8;
 	
 
@@ -193,6 +192,11 @@ public class Movement : MonoBehaviour
 		if ( _panic.IsOn()) {
 			_rigidbody.velocity = Vector3.Lerp( _rigidbody.velocity, Vector3.zero, _panicSpeed );
 			_rigidbody.angularVelocity = Vector3.Lerp( _rigidbody.angularVelocity, Vector3.zero, _panicSpeed );
+
+			_forwardAxis.Zero();
+			_strafeAxis.Zero();
+			_rollAxis.Zero();
+			_yawAxis.Zero();
 		}
 	}
 }

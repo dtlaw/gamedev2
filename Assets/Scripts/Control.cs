@@ -17,11 +17,16 @@ public abstract class Control : MonoBehaviour {
 	public float GetState() {
 		return _state;
 	}
+
 	public bool IsOn() {
 		if ( _state > 0 ) {
 			return true;
 		} else {
 			return false;
 		}
+	}
+
+	public void Zero() {
+		_state = 0;
 	}
 }

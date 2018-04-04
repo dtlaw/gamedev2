@@ -53,9 +53,10 @@ public class Lever : Control {
 
 				_state = (( projection.magnitude / track.magnitude ) * ( _maxValue - _minValue )) + _minValue;
 
-				_animator.SetFloat( "NormalizedTime", ( _state - _minValue ) / ( _maxValue - _minValue ));
 			}
 		}
+
+		_animator.SetFloat( "NormalizedTime", ( _state - _minValue ) / ( _maxValue - _minValue ));
 	}
 
 

@@ -37,25 +37,7 @@ public class Knob : Control {
 		_transform.localRotation = Quaternion.Euler( 0, _startRotation + rotation, 0 );
 	}
 
-
-	// Public interface
-	public override void OnScrollUp() {
-		_state = Mathf.Clamp( _state + _increment, _minValue, _maxValue );
-		SetStateRotation();
-	}
-
-	public override void OnScrollDown() {
-		_state = Mathf.Clamp( _state - _increment, _minValue, _maxValue );
-		SetStateRotation();
-	}
-
-
-	// Private interface
-	private float NormalizedState() {
-		return _state;
-	}
-
-	private void SetStateRotation() {
+	private void Update() {
 
 		// Convert normalized state into a rotation between min and max value
 		float normalizedState = ( _state - _minValue ) / ( _maxValue - _minValue );
@@ -63,5 +45,15 @@ public class Knob : Control {
 		float rotation = rotationRange * normalizedState;
 
 		_transform.localRotation = Quaternion.Euler( 0, _startRotation + rotation, 0 );
+	}
+
+
+	// Public interface
+	public override void OnScrollUp() {
+		_state = Mathf.Clamp( _state + _increment, _minValue, _maxValue );
+	}
+
+	public override void OnScrollDown() {
+		_state = Mathf.Clamp( _state - _increment, _minValue, _maxValue );
 	}
 }

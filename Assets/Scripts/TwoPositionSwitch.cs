@@ -15,15 +15,17 @@ public class TwoPositionSwitch : Control {
 		_animator.SetFloat( "NormalizedTime", 0 );
 	}
 
+	private void Update() {
+		_animator.SetFloat( "NormalizedTime", _state );
+	}
+
 
 	// Public interface
 	public override void OnClick() {
 		if ( _state > 0 ) {
 			_state = 0;
-			_animator.SetFloat( "NormalizedTime", 0 );
 		} else {
 			_state = 1;
-			_animator.SetFloat( "NormalizedTime", 1 );
 		}
 	}
 }
