@@ -6,8 +6,6 @@ public class handBehavior : MonoBehaviour {
 
 	// Exposed variables
 	[ SerializeField ]
-	private int _muscleForce = 500;
-	[ SerializeField ]
 	private float _dist = 5f;
 	
 	[ Header( "Arm buttons" ) ]
@@ -20,8 +18,6 @@ public class handBehavior : MonoBehaviour {
 	// Private variables
 	private bool _grab;
 
-	private HingeJoint _hand;
-	private JointMotor _muscle;
 	private Rigidbody _handBody;
 	private Animation _grabbing;
 	private Transform _grabbedTransform;
@@ -32,9 +28,7 @@ public class handBehavior : MonoBehaviour {
 
 	// Messages
 	private void Start() {
-		_hand = gameObject.GetComponent< HingeJoint >();
 		_handBody = gameObject.GetComponent< Rigidbody >();
-		_muscle = _hand.motor;
 		_grab = false;
 		_interact = false;
 		_pressed = false;
@@ -80,16 +74,6 @@ public class handBehavior : MonoBehaviour {
 		} else if ( !_armGrab.IsOn()) {
 			_pressed = false;
 		}
-
-		if ( _armDrop.IsOn()) {
-			_hand.useMotor = true;
-			_muscle.force = _muscleForce;
-			_muscle.targetVelocity = _muscleForce;
-		} else {
-			_hand.useMotor = false;
-			_muscle.force = 0;
-		}
-		_hand.motor = _muscle;
 		_handBody.velocity = Vector3.zero;
 		_handBody.angularVelocity = Vector3.zero;
 	}
