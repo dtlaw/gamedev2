@@ -18,6 +18,9 @@ public class Lever : Control {
 	[ SerializeField ]
 	private Transform _endPoint;
 
+	[ SerializeField ]
+	private float _detentThreshold;
+
 
 	// Private variables
 	private Transform _transform;
@@ -67,5 +70,9 @@ public class Lever : Control {
 
 	public override void OnRelease() {
 		_gripped = false;
+
+		if ( Mathf.Abs( _defaultValue - _state ) < _detentThreshold ) {
+			_state = _defaultValue;
+		}
 	}
 }
