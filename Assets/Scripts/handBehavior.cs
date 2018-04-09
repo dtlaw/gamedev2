@@ -15,8 +15,12 @@ public class handBehavior : MonoBehaviour {
 	private Control _armDrop;
 
 	[ SerializeField ]
-	private GameObject _parent;
-	private jointMotor _parentJoint;
+	private GameObject _forearm;
+	private jointMotor _forearmJoint;
+
+	[ SerializeField ]
+	private GameObject _upperarm;
+	private jointMotor _upperarmJoint;
 	public Quaternion currentRot {get; set;}
 	private bool _released;
 
@@ -32,8 +36,10 @@ public class handBehavior : MonoBehaviour {
 
 	// Messages
 	private void Start() {
-		_parentJoint = _parent.GetComponent<jointMotor>();
 		_handBody = gameObject.GetComponent< Rigidbody >();
+		_upperarmJoint = _upperarm.GetComponent<jointMotor>();
+		_forearmJoint = _forearm.GetComponent<jointMotor>();
+		currentRot = gameObject.transform.localRotation;
 		_released = false;
 		_grab = false;
 		_interact = false;
@@ -82,8 +88,15 @@ public class handBehavior : MonoBehaviour {
 		}
 		_handBody.velocity = Vector3.zero;
 		_handBody.angularVelocity = Vector3.zero;
-		if(_parentJoint.use != _released){
-			_released = _parentJoint.use;
+
+		if(_upperarmJoint.use != _released){
+			_released = _upperarmJoint.use;
+			if(!_released){
+				currentRot = gameObject.transform.localRotation;
+			}
+		}
+		if(_forearmJoint.use != _released){
+			_released = _forearmJoint.use;
 			if(!_released){
 				currentRot = gameObject.transform.localRotation;
 			}
