@@ -73,8 +73,6 @@ public class Movement : MonoBehaviour {
 	private Rigidbody _shoulderbody;
 	private Rigidbody _forearmbody;
 	private Rigidbody _handbody;
-	private Rigidbody _wristbody;
-
 
 	// Messages
 	private void Awake() {
@@ -93,16 +91,15 @@ public class Movement : MonoBehaviour {
 		_thruster6.Stop();
 		_thruster7.Stop();
 		_thruster8.Stop();
-		if ( _shoulder.GetComponent<shoulderBehavior>().use == false &&
-			_forearm.GetComponent<forearmBehavior>().use == false ) {
+		if ( _shoulder.GetComponent<jointMotor>().use == false &&
+			_forearm.GetComponent<jointMotor>().use == false ) {
 			_shoulderbody.constraints = RigidbodyConstraints.FreezePosition;
 			_forearmbody.constraints = RigidbodyConstraints.FreezePosition;
 			_handbody.constraints = RigidbodyConstraints.FreezePosition;
 
-			// _shoulderbody.constraints = RigidbodyConstraints.FreezeRotation;
-			// _forearmbody.constraints = RigidbodyConstraints.FreezeRotation;
-			// _handbody.constraints = RigidbodyConstraints.FreezeRotation;
-			
+			_shoulder.transform.localRotation = _shoulder.GetComponent<jointMotor>().currentRot;
+			_forearm.transform.localRotation = _forearm.GetComponent<jointMotor>().currentRot;
+			_hand.transform.localRotation = _hand.GetComponent<handBehavior>().currentRot;
 		} else {
 			_shoulderbody.constraints = RigidbodyConstraints.None;
 			_forearmbody.constraints = RigidbodyConstraints.None;
