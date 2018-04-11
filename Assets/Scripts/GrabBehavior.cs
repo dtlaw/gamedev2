@@ -5,7 +5,7 @@ using UnityEngine;
 public class GrabBehavior : MonoBehaviour {
 
 	RaycastHit hitInfo;
-	Vector3 fwdPos;
+	Vector3 closestPos;
 	private bool _grab {get; set;}
 	bool on = false;
 	ParticleSystem beam;
@@ -40,15 +40,6 @@ public class GrabBehavior : MonoBehaviour {
 		return _grab;
 	}
 
-	public bool Interact() {
-		return _interact;
-	}
-
-	public void setGrabFalse() {
-		_grab = false;
-		_grabbedTransform.parent = null;
-	}
-
 	// Update is called once per frame
 	private void Update() {
 		Ray ray = new Ray (beam.transform.position, beam.transform.forward);
@@ -68,42 +59,21 @@ public class GrabBehavior : MonoBehaviour {
 		} else {
 			beam.Play ();
 		}
-			
-		if(_grab){
-			if(_beamIn.IsOn()){
-				Debug.Log("In");
-				_grabbedTransform.position = Vector3.Lerp (_grabbedTransform.position, transform.position, 1 * Time.deltaTime);
-			}else if(_beamOut.IsOn()){
-				Debug.Log("Out");
-				fwdPos = transform.position + transform.forward * 10f;
-				_grabbedTransform.position = Vector3.Lerp (_grabbedTransform.position, fwdPos, 1 * Time.deltaTime);
-			}
-		} 
 
 		// grabbing and dropping
 		if (Physics.Raycast (ray, out hitInfo) && beam.isPlaying) {
 			if (hitInfo.collider.tag == "interactable" || _grab ) {
-				_interact = true;
-				// grab
-				if (_beamGrab.IsOn()) {
-					Debug.Log ("Grabbed");
-					_grab = true;
-					hitInfo.collider.transform.SetParent(gameObject.transform.parent);
-					_grabbedTransform = hitInfo.collider.transform;
-				} 
-				// drop
-				else if (_beamDrop.IsOn()) {
-					Debug.Log ("Dropped");
-					_grab = false;
-					_grabbedTransform.parent = null;
-					// hitInfo.collider.transform.parent = null;
-					on = !on;
-				} 
-			} else {
-				_interact = false;
-			}
+				_grab = true;
+				hitInfo.collider.transform.SetParent(gameObject.transform.parent);
+				_grabbedTransform = hitInfo.collider.transform;
+				closestPos = transform.position + transform.forward * 1f;
+				_grabbedTransform.position = Vector3.Lerp (_grabbedTransform.position, closestPos, 1 * Time.deltaTime);
+
+			} 
 		} else {
-			_interact = false;
+			if (_grabbedTransform != null) {
+				_grabbedTransform.parent = null;
+			}
 		}
 	}
 }

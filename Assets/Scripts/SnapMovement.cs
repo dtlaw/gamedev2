@@ -22,9 +22,7 @@ public class SnapMovement : MonoBehaviour {
 			if (GameObject.Find("Hand").GetComponent<handBehavior>().Grab()) {
 				GameObject.Find("Hand").GetComponent<handBehavior>().setGrabFalse();
 			}
-			if (GameObject.Find("laser_beam").GetComponent<GrabBehavior>().Grab()) {
-				GameObject.Find("laser_beam").GetComponent<GrabBehavior>().setGrabFalse();
-			}
+		
 			_snap = true ;
 		}
 

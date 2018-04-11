@@ -18,15 +18,14 @@ public class CameraMovement : MonoBehaviour {
 	void Start () {
 		currentMX = Input.mousePosition.x;
         currentMY = Input.mousePosition.y;
-        initialRotation = transform.rotation;
+        initialRotation = transform.localRotation;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		cameraRotation = transform.parent.rotation * initialRotation; 
 
-		if (Input.GetMouseButton(1))
-        {
+		if (Input.GetMouseButton(1)) {
             currentMX = Input.mousePosition.x;
             currentMY = Input.mousePosition.y;
 
@@ -43,8 +42,7 @@ public class CameraMovement : MonoBehaviour {
             xRotation = -(currentMY - Screen.currentResolution.height / 2) * (maxRotation / Screen.currentResolution.height);
 
 
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(xRotation, yRotation, transform.rotation.z)), 7 * Time.deltaTime);
-
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(new Vector3(xRotation, yRotation, transform.rotation.z)), 7 * Time.deltaTime);
         } 
         else {
         	transform.rotation = Quaternion.Lerp(transform.rotation, cameraRotation, 7 * Time.deltaTime);
