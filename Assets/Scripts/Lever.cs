@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Lever : Control {
 
+	// Constants
+	private const float ROLLOVER_THRESHOLD = 0.01f;
+
+
 	// Exposed variables
 	[ SerializeField ]
 	private Animator _animator;
@@ -50,12 +54,11 @@ public class Lever : Control {
 			Vector3 track = new Vector3( end.x - start.x, end.y - start.y, end.z - start.z );
 			Vector3 mousePos = Input.mousePosition;
 
-			if (( mousePos.x > start.x && mousePos.x < end.x ) || ( mousePos.y > start.y && mousePos.y < end.y )) {
-				Vector3 projection = Vector3.Project( mousePos - start, track );
-				projection = Vector3.ClampMagnitude( projection, track.magnitude );
+			Vector3 projection = Vector3.Project( mousePos - start, track );
+			projection = Vector3.ClampMagnitude( projection, track.magnitude );
 
+			if ( projection.x > ROLLOVER_THRESHOLD| projection.y < -ROLLOVER_THRESHOLD ) {
 				_state = (( projection.magnitude / track.magnitude ) * ( _maxValue - _minValue )) + _minValue;
-
 			}
 		}
 
