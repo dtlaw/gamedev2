@@ -17,7 +17,7 @@ public class SnapMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Vector3.Distance(transform.position, goal.transform.position) <= 0.6)
+        if (Vector3.Distance(GameObject.Find("Hand").transform.position, goal.transform.position) <= 1.3)
         {
             if (!GameObject.Find("Hand").GetComponent<handBehavior>().Grab())
             {
