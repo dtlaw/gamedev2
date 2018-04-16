@@ -67,6 +67,31 @@ public class Movement : MonoBehaviour {
 	[ SerializeField ]
 	private ParticleSystem _thruster8;
 	
+	[ Header( "Movement UI" ) ]
+	[ SerializeField ]
+	private GameObject _forwardUI;
+	[ SerializeField ]
+	private GameObject _backwardUI;
+	[ SerializeField ]
+	private GameObject _leftUI;
+	[ SerializeField ]
+	private GameObject _rightUI;
+	[ SerializeField ]
+	private GameObject _pitchUpUI;
+	[ SerializeField ]
+	private GameObject _pitchDownUI;
+	[ SerializeField ]
+	private GameObject _rollUpUI;
+	[ SerializeField ]
+	private GameObject _rollDownUI;
+	[ SerializeField ]
+	private GameObject _yawLeftUI;
+	[ SerializeField ]
+	private GameObject _yawRightUI;
+	[ SerializeField ]
+	private GameObject _upUI;
+	[ SerializeField ]
+	private GameObject _downUI;
 
 	// Private variables
 	private Rigidbody _rigidbody;
@@ -91,6 +116,20 @@ public class Movement : MonoBehaviour {
 		_thruster6.Stop();
 		_thruster7.Stop();
 		_thruster8.Stop();
+
+		_forwardUI.SetActive(false);
+		_backwardUI.SetActive(false);
+		_leftUI.SetActive(false);
+		_rightUI.SetActive(false);
+		_pitchUpUI.SetActive(false);
+		_pitchDownUI.SetActive(false);
+		_rollUpUI.SetActive(false);
+		_rollDownUI.SetActive(false);
+		_yawLeftUI.SetActive(false);
+		_yawRightUI.SetActive(false);
+		_upUI.SetActive(false);
+		_downUI.SetActive(false);
+
 		if ( _shoulder.GetComponent<jointMotor>().use == false &&
 			_forearm.GetComponent<jointMotor>().use == false ) {
 			_shoulderbody.constraints = RigidbodyConstraints.FreezePosition;
@@ -108,11 +147,13 @@ public class Movement : MonoBehaviour {
 		
 		_rigidbody.AddRelativeForce( Vector3.forward * _translationForce * _forwardAxis.GetState());
 		if ( _forwardAxis.GetState() > 0 ) {
+			_forwardUI.SetActive(true);
 			_thruster5.Play();
 			_thruster6.Play();
 			_thruster7.Play();
 			_thruster8.Play();
 		} else if ( _forwardAxis.GetState() < 0 ) {
+			_backwardUI.SetActive(true);
 			_thruster1.Play();
 			_thruster2.Play();
 			_thruster3.Play();
@@ -121,11 +162,13 @@ public class Movement : MonoBehaviour {
 
 		_rigidbody.AddRelativeForce( Vector3.right * _translationForce * _strafeAxis.GetState());
 		if ( _strafeAxis.GetState() < 0 ) {
+			_leftUI.SetActive(true);
 			_thruster1.Play();
 			_thruster2.Play();
 			_thruster5.Play();
 			_thruster6.Play();
 		} else if ( _strafeAxis.GetState() > 0 ) {
+			_rightUI.SetActive(true);
 			_thruster3.Play();
 			_thruster4.Play();
 			_thruster7.Play();
@@ -133,12 +176,14 @@ public class Movement : MonoBehaviour {
 		}
 
 		if ( _moveUp.IsOn()) {
+			_upUI.SetActive(true);
 			_rigidbody.AddRelativeForce(Vector3.up * _translationForce);
 			_thruster2.Play();
 			_thruster4.Play();
 			_thruster6.Play();
 			_thruster8.Play();
 		} else if ( _moveDown.IsOn()) {
+			_downUI.SetActive(true);
 			_rigidbody.AddRelativeForce(Vector3.down * _translationForce);
 			_thruster1.Play();
 			_thruster3.Play();
@@ -147,12 +192,14 @@ public class Movement : MonoBehaviour {
 		}
 
 		if ( _pitchUp.IsOn()) {
+			_pitchUpUI.SetActive(true);
 			_rigidbody.AddRelativeTorque(-_pitchTorque, 0, 0);
 			_thruster2.Play();
 			_thruster4.Play();
 			_thruster5.Play();
 			_thruster7.Play();
 		} else if ( _pitchDown.IsOn()) {
+			_pitchDownUI.SetActive(true);
 			_rigidbody.AddRelativeTorque(_pitchTorque, 0, 0);
 			_thruster1.Play();
 			_thruster3.Play();
@@ -162,11 +209,13 @@ public class Movement : MonoBehaviour {
 
 		_rigidbody.AddRelativeTorque( 0, 0, -_rollTorque * _rollAxis.GetState());
 		if ( _rollAxis.GetState() > 0 ) {
+			_rollUpUI.SetActive(true);
 			_thruster2.Play();
 			_thruster6.Play();
 			_thruster3.Play();
 			_thruster7.Play();
 		} else if ( _rollAxis.GetState() < 0 ) {
+			_rollDownUI.SetActive(true);
 			_thruster1.Play();
 			_thruster5.Play();
 			_thruster4.Play();
@@ -175,11 +224,13 @@ public class Movement : MonoBehaviour {
 
 		_rigidbody.AddRelativeTorque(0, _yawTorque * _yawAxis.GetState(), 0);
 		if ( _yawAxis.GetState() > 0 ) {
+			_yawRightUI.SetActive(true);
 			_thruster1.Play();
 			_thruster2.Play();
 			_thruster7.Play();
 			_thruster8.Play();
 		} else if ( _yawAxis.GetState() < 0 ) {
+			_yawLeftUI.SetActive(true);
 			_thruster3.Play();
 			_thruster4.Play();
 			_thruster5.Play();

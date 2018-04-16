@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FloatingBehavior : MonoBehaviour {
 
-    private float _amplitude = 0.15f;
+    private float _amplitude = 0.08f;
     private float _frequency = 1f;
     private bool _grab = false;
  
