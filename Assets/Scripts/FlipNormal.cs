@@ -12,7 +12,6 @@ public class FlipNormal : MonoBehaviour {
 		mesh.triangles = mesh.triangles.Reverse().ToArray();
 		mesh.normals = mesh.normals.Select(o => -o).ToArray();
 	}
-	
 	// Update is called once per frame
 	void Update () {
 		
