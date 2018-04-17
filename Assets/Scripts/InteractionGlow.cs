@@ -13,17 +13,12 @@ public class InteractionGlow : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		// TODO: Refactor into Grabbable.cs
 		if (GameObject.Find("Hand").GetComponent<handBehavior>().Interact() ) {
 			_light.enabled = true;
 		} else {
 			_light.enabled = false;
-		}
-
-
-		if (GameObject.Find("Hand").GetComponent<handBehavior>().Grab() ) {
-			_light.color = Color.green;
-		} else {
-			_light.color = Color.yellow;
 		}
 	}
 }

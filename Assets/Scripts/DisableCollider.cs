@@ -3,18 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DisableCollider : MonoBehaviour {
-	private BoxCollider _collider;
-	// Use this for initialization
-	void Start () {
-		_collider = GetComponent<BoxCollider>();
+
+	// Private variables
+	private Collider _collider;
+
+
+	// Messages
+	private void Awake() {
+		_collider = GetComponent< Collider >();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		if (GameObject.Find("laser_beam").GetComponent<GrabBehavior>().Grab()) {
-			_collider.enabled = false;
+	private void Update() {
+		if ( GameObject.Find( "TractorBeam" ).GetComponent< TractorBeam >()) {
 		} else {
 			_collider.enabled = true;
 		}
+	}
+
+	public void Grabbed( bool b ) {
+		_collider.enabled = b;
 	}
 }

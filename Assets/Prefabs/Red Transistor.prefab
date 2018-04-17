@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114161785005325120}
   - component: {fileID: 114970864845331460}
   - component: {fileID: 114975921792184654}
+  - component: {fileID: 114904112527913498}
   m_Layer: 0
   m_Name: Red Transistor
   m_TagString: interactable
@@ -166,13 +167,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goal: {fileID: 0}
   door: {fileID: 0}
---- !u!114 &114970864845331460
+--- !u!114 &114904112527913498
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1662368029053448}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3e5fd38d58b9be49996a1ac681fe9be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114970864845331460
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1662368029053448}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1885feb93effb574e94f56d1f1e5580e, type: 3}
   m_Name: 
@@ -188,3 +200,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03f36d811a2c2fb4cbbf7f6cc4640621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _amplitude: 0.08
+  _frequency: 1

@@ -16,14 +16,6 @@ public class GrabBehavior : MonoBehaviour {
 	[ Header( "Tractor buttons" ) ]
 	[ SerializeField ]
 	private Control _beamOn;
-	[ SerializeField ]
-	private Control _beamIn;
-	[ SerializeField ]
-	private Control _beamOut;
-	[ SerializeField ]
-	private Control _beamGrab;
-	[ SerializeField ]
-	private Control _beamDrop;
 
 	private bool _pressed;
 

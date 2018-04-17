@@ -4,27 +4,35 @@ using UnityEngine;
 
 public class FloatingBehavior : MonoBehaviour {
 
+	// Exposed variables
+	[ SerializeField ]
     private float _amplitude = 0.08f;
+	[ SerializeField ]
     private float _frequency = 1f;
-    private bool _grab = false;
- 
-    // Position Storage Variables
-    Vector3 posOffset = new Vector3 ();
-    Vector3 tempPos = new Vector3 ();
 
-	// Use this for initialization
-	void Start () {
+
+    // Private variables
+	private Grabbable _grabbable;
+
+    private Vector3 posOffset;
+	private bool _beenGrabbed;
+
+
+	// Messages
+	private void Awake() {
+		_grabbable = GetComponent< Grabbable >();
+
 		posOffset = transform.position;
+		_beenGrabbed = false;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (GameObject.Find("Hand").GetComponent<handBehavior>().Grab() ||
-			GameObject.Find("laser_beam").GetComponent<GrabBehavior>().Grab()) {
-			_grab = true;
+
+	private void Update() {
+		if ( _grabbable.Grabbed ) {
+			_beenGrabbed = true;
 		}
-		if (!_grab) {
-			tempPos = posOffset;
+
+		if ( !_beenGrabbed ) {
+			Vector3 tempPos = posOffset;
 	        tempPos.y += Mathf.Sin (Time.fixedTime * Mathf.PI * _frequency) * _amplitude;
 	 
 	        transform.position = tempPos;
