@@ -42,17 +42,17 @@ public class TractorBeam : MonoBehaviour {
 
 		RaycastHit hit;
 		Transform beamTransform = _beamParticles.transform;
-		if ( Physics.Raycast ( beamTransform.position, beamTransform.forward, out hit ) && _beamOn ) {
+		if ( Physics.Raycast ( beamTransform.position, beamTransform.forward, out hit ) && _beamOn && !_objectGrabbed ) {
 			Grabbable g = hit.collider.GetComponent< Grabbable >();
-			if ( g || _objectGrabbed ) {
+			if ( g ) {
 				_objectGrabbed = true;
 				g.Grab();
 				hit.collider.transform.SetParent( transform.parent );
 				_grabbedTransform = hit.collider.transform;
-				Vector3 closestPos = transform.position + transform.forward;
-				_grabbedTransform.position = Vector3.Lerp ( _grabbedTransform.position, closestPos, Time.deltaTime );
-
 			} 
+		} else if ( _beamOn && _objectGrabbed ) {
+			Vector3 closestPos = transform.position + transform.forward;
+			_grabbedTransform.position = Vector3.Lerp ( _grabbedTransform.position, closestPos, Time.deltaTime );
 		} else {
 			if ( _grabbedTransform != null ) {
 				Grabbable g = _grabbedTransform.GetComponent< Grabbable >();
