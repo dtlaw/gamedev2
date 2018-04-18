@@ -24,13 +24,11 @@ public class Grabbable : MonoBehaviour {
 	// Public interface
 	public void Grab() {
 		_collider.enabled = false;
-		_highlight.color = Color.green;
 		_grabbed = true;
 	}
 
 	public void Release() {
 		_collider.enabled = true;
-		_highlight.color = Color.white;
 		_grabbed = false;
 	}
 }

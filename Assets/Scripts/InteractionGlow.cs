@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class InteractionGlow : MonoBehaviour {
 
+	// Private variables
 	private Light _light;
 
-	// Use this for initialization
-	void Start () {
+
+	// Messages
+	private void Awake() {
 		_light = GetComponent<Light>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	private void Update() {
 
 		// TODO: Refactor into Grabbable.cs
-		if (GameObject.Find("Hand").GetComponent<handBehavior>().Interact() ) {
+		if ( GameObject.Find( "Hand" ).GetComponent< Hand >().CanInteract == this.gameObject ) {
 			_light.enabled = true;
 		} else {
 			_light.enabled = false;
