@@ -35,7 +35,6 @@ public class Hand : MonoBehaviour {
 
 	private Transform _grabbedTransform;
 	private bool _grabbing;
-	private bool _pressed;
 
 	public bool Grabbing { get { return _grabbing; }}
 
@@ -50,9 +49,7 @@ public class Hand : MonoBehaviour {
 		_forearmJoint = _forearm.GetComponent<jointMotor>();
 		currentRot = gameObject.transform.localRotation;
 		_released = false;
-
 		_grabbing = false;
-		_pressed = false;
 	}
 	
 	private void Update() {
@@ -63,8 +60,7 @@ public class Hand : MonoBehaviour {
 		} else {
 			_canInteract = null;
 		}
-
-		if ( _grabButton.IsOn() && !_pressed ) {
+		if ( _grabButton.GetState() == 1) {
 			if ( !_grabbing && _canInteract ) {
 				Transform other = hitInfo.collider.GetComponent< Transform >();
 				hitInfo.collider.GetComponent< Grabbable >().Grab();
@@ -76,18 +72,13 @@ public class Hand : MonoBehaviour {
 				_animator.SetBool( "Grabbing", true );
 				_animator.Play( _grabStateName );
 				_grabbing = true;
-			} else if ( _grabbing ) {
-				_grabbedTransform.GetComponent< Grabbable >().Release();
-				_grabbedTransform.parent = null;
-
-				_animator.SetBool( "Grabbing", false );
-				_animator.Play( _grabStateName );
-				_grabbing = false;
 			}
-
-			_pressed = true;
-		} else if ( !_grabButton.IsOn()) {
-			_pressed = false;
+		} else if ( _grabButton.GetState() == 0 && _grabbing) {
+			_grabbedTransform.GetComponent< Grabbable >().Release();
+			_grabbedTransform.parent = null;
+			_animator.SetBool( "Grabbing", false );
+			_animator.Play( _grabStateName );
+			_grabbing = false;
 		}
 
 		if(_upperarmJoint.use != _released){
