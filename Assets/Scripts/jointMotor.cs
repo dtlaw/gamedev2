@@ -38,13 +38,11 @@ public class jointMotor : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (_armPos.IsOn()) {
-			//_shoulderBody.constraints = RigidbodyConstraints.None;
 			_joint.useMotor = true;
 			_muscle.force = _muscleForce;
 			_muscle.targetVelocity = _muscleForce;
 			use = true;
 		}else if (_armNeg.IsOn()) {
-			//_shoulderBody.constraints = RigidbodyConstraints.None;
 			_joint.useMotor = true;
 			_muscle.force = _muscleForce;
 			_muscle.targetVelocity = -(_muscleForce);

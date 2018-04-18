@@ -13,12 +13,15 @@ public class Hand : MonoBehaviour {
 	private string _grabStateName;
 	[ SerializeField ]
 	private Transform _grabPosition;
+
 	[ SerializeField ]
+	private GameObject _forearm;
 	private jointMotor _forearmJoint;
-
 	[ SerializeField ]
-	private jointMotor _upperArmJoint;
-
+	private GameObject _upperarm;
+	private jointMotor _upperarmJoint;
+	public Quaternion currentRot;
+	private bool _released;
 
 	// Public variables
 	private GameObject _canInteract;
@@ -34,12 +37,19 @@ public class Hand : MonoBehaviour {
 	private bool _grabbing;
 	private bool _pressed;
 
+	public bool Grabbing{get {return _grabbing;}}
+
 
 	// Messages
 	private void Awake() {
 		_transform = GetComponent< Transform >();
 		_rigidbody = GetComponent< Rigidbody >();
 		_animator = GetComponent< Animator >();
+
+		_upperarmJoint = _upperarm.GetComponent<jointMotor>();
+		_forearmJoint = _forearm.GetComponent<jointMotor>();
+		currentRot = gameObject.transform.localRotation;
+		_released = false;
 
 		_grabbing = false;
 		_pressed = false;
@@ -78,6 +88,19 @@ public class Hand : MonoBehaviour {
 			_pressed = true;
 		} else if ( !_grabButton.IsOn()) {
 			_pressed = false;
+		}
+
+		if(_upperarmJoint.use != _released){
+			_released = _upperarmJoint.use;
+			if(!_released){
+				currentRot = gameObject.transform.localRotation;
+			}
+		}
+		if(_forearmJoint.use != _released){
+			_released = _forearmJoint.use;
+			if(!_released){
+				currentRot = gameObject.transform.localRotation;
+			}
 		}
 	}
 }
