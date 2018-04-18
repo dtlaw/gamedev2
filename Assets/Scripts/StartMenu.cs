@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class StartMenu : MonoBehaviour {
     public void StartGame()
     {
-        SceneManager.LoadScene("firstPlayable");
+        SceneManager.LoadScene("FinalBuild");
     }
 
     public void Quit()
