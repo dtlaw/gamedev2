@@ -20,7 +20,7 @@ public class ChangeColor : MonoBehaviour {
 		if ( objectName == "Hand" ) {
 			_grab = GameManager.Instance.GetComponent< CockpitReferences >().Hand.Grabbing;
 		} else if ( objectName == "TractorBeam" ) {
-			_grab = GameObject.Find( objectName ).GetComponent< GrabBehavior >().Grab();
+			_grab = GameManager.Instance.GetComponent< CockpitReferences >().TractorBeam.Grabbing;
 		}
 		if ( _grab ) {
 			_image.color = Color.green;
