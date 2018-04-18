@@ -45,20 +45,27 @@ public class TractorBeam : MonoBehaviour {
 		if ( Physics.Raycast ( beamTransform.position, beamTransform.forward, out hit ) && _beamOn && !_objectGrabbed ) {
 			Grabbable g = hit.collider.GetComponent< Grabbable >();
 			if ( g ) {
+
+				// Grab
 				_objectGrabbed = true;
 				g.Grab();
 				hit.collider.transform.SetParent( transform.parent );
 				_grabbedTransform = hit.collider.transform;
 			} 
 		} else if ( _beamOn && _objectGrabbed ) {
+
+			// Pull
 			Vector3 closestPos = transform.position + transform.forward;
 			_grabbedTransform.position = Vector3.Lerp ( _grabbedTransform.position, closestPos, Time.deltaTime );
 		} else {
 			if ( _grabbedTransform != null ) {
+
+				// Drop
 				Grabbable g = _grabbedTransform.GetComponent< Grabbable >();
+				g.Release();
 				_grabbedTransform.parent = null;
 				_objectGrabbed = false;
-				g.Release();
+				_grabbedTransform = null;
 			}
 		}
 	}
