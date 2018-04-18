@@ -138,7 +138,7 @@ public class Movement : MonoBehaviour {
 
 			_shoulder.transform.localRotation = _shoulder.GetComponent<jointMotor>().currentRot;
 			_forearm.transform.localRotation = _forearm.GetComponent<jointMotor>().currentRot;
-			// _hand.transform.localRotation = _hand.GetComponent<handBehavior>().currentRot;
+			_hand.transform.localRotation = _hand.GetComponent<Hand>().currentRot;
 		} else {
 			_shoulderbody.constraints = RigidbodyConstraints.None;
 			_forearmbody.constraints = RigidbodyConstraints.None;
