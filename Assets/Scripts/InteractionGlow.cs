@@ -16,7 +16,8 @@ public class InteractionGlow : MonoBehaviour {
 	private void Update() {
 
 		// TODO: Refactor into Grabbable.cs
-		if ( GameObject.Find( "Hand" ).GetComponent< Hand >().CanInteract == this.gameObject ) {
+		Hand h = GameManager.Instance.GetComponent< CockpitReferences >().Hand;
+		if ( h.CanInteract == gameObject ) {
 			_light.enabled = true;
 		} else {
 			_light.enabled = false;

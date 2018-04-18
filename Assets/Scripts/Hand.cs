@@ -37,7 +37,7 @@ public class Hand : MonoBehaviour {
 	private bool _grabbing;
 	private bool _pressed;
 
-	public bool Grabbing{get {return _grabbing;}}
+	public bool Grabbing { get { return _grabbing; }}
 
 
 	// Messages

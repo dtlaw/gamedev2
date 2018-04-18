@@ -15,8 +15,10 @@ public class ChangeColor : MonoBehaviour {
 	}
 	
 	private void Update () {
+
+		// TODO: Refactor this, this is bad
 		if ( objectName == "Hand" ) {
-			_grab = GameObject.Find( objectName ).GetComponent< Hand >().Grabbing;
+			_grab = GameManager.Instance.GetComponent< CockpitReferences >().Hand.Grabbing;
 		} else if ( objectName == "TractorBeam" ) {
 			_grab = GameObject.Find( objectName ).GetComponent< GrabBehavior >().Grab();
 		}
