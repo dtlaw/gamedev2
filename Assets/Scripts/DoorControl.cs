@@ -4,23 +4,14 @@ using UnityEngine;
 
 public class DoorControl : MonoBehaviour {
 
-    private Vector3 _doorPos;
-
     [SerializeField]
-    private GameObject key1;
-    [SerializeField]
-    private GameObject key2;
+    private GameObject _door;
 
-    void Start()
+    private void OnCollisionEnter(Collision collision)
     {
-        _doorPos = transform.position;
-    }
-
-    void Update()
-    {
-        if(key1.GetComponent<SnapMovement2>().isSnapped() && key2.GetComponent<SnapMovement2>().isSnapped())
+        if(collision.collider.gameObject.tag == "interactable")
         {
-            transform.position = Vector3.Lerp(transform.position, _doorPos + (transform.right * 3.5f), 0.10f);
+            _door.gameObject.SetActive(false);
         }
     }
 }

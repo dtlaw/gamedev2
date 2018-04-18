@@ -28,16 +28,15 @@ public class TractorBeam : MonoBehaviour {
 	}
 
 	private void Update() {
-		if ( _toggleButton.IsOn() && !_pressed ) {
+		if ( _toggleButton.GetState() == 1 && !_pressed ) {
 			if ( !_beamOn ) {
 				_beamOn = true;
 				_beamParticles.Play();
-			} else {
-				_beamOn = false;
-				_beamParticles.Stop();
 			}
 			_pressed = true;
-		} else if ( !_toggleButton.IsOn()) {
+		} else if ( _toggleButton.GetState() == 0) {
+			_beamOn = false;
+			_beamParticles.Stop();
 			_pressed = false;
 		}
 
