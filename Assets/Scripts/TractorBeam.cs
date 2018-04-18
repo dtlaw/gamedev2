@@ -18,6 +18,7 @@ public class TractorBeam : MonoBehaviour {
 	private bool _objectGrabbed;
 	private Transform _grabbedTransform;
 
+	public bool Grabbing { get { return _objectGrabbed; }}
 
 	// Messages
 	private void Awake() {
