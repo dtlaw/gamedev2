@@ -22,7 +22,7 @@ public class TractorBeam : MonoBehaviour {
 	// Messages
 	private void Awake() {
 		_pressed = false;
-		_beamOn = true;
+		_beamOn = false;
 		_objectGrabbed = false;
 	}
 
