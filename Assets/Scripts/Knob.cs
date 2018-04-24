@@ -19,9 +19,16 @@ public class Knob : Control {
 	[ SerializeField ]
 	private float _endRotation;
 
+	[ SerializeField ]
+	private float _mouseMultiplier;
+	[ SerializeField ]
+	private float _centerThreshold;
+
 
 	// Private variables
 	private Transform _transform;
+
+	private bool _gripped;
 
 
 	// Messages
@@ -29,6 +36,7 @@ public class Knob : Control {
 		_transform = GetComponent< Transform >();
 
 		_state = _defaultValue;
+		_gripped = false;
 
 		float normalizedState = ( _state - _minValue ) / ( _maxValue - _minValue );
 		float rotationRange = _endRotation - _startRotation;
@@ -38,6 +46,10 @@ public class Knob : Control {
 	}
 
 	private void Update() {
+
+		if ( _gripped ) {
+			_state = Mathf.Clamp( _state + Input.GetAxis( "Mouse Y" ) * _mouseMultiplier, _minValue, _maxValue );
+		}
 
 		// Convert normalized state into a rotation between min and max value
 		float normalizedState = ( _state - _minValue ) / ( _maxValue - _minValue );
@@ -49,6 +61,18 @@ public class Knob : Control {
 
 
 	// Public interface
+	public override void OnClick() {
+		_gripped = true;
+	}
+
+	public override void OnRelease() {
+		_gripped = false;
+
+		if ( Mathf.Abs( _defaultValue - _state ) < _centerThreshold ) {
+			_state = _defaultValue;
+		}
+	}
+
 	public override void OnScrollUp() {
 		_state = Mathf.Clamp( _state + _increment, _minValue, _maxValue );
 	}

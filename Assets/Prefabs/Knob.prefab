@@ -189,3 +189,5 @@ MonoBehaviour:
   _defaultValue: 0
   _startRotation: 0
   _endRotation: 180
+  _mouseMultiplier: 0.25
+  _centerThreshold: 0.2
