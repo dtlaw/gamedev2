@@ -12,4 +12,8 @@ public class CockpitReferences : MonoBehaviour {
 	[ SerializeField ]
 	private TractorBeam _tractorBeam;
 	public TractorBeam TractorBeam { get { return _tractorBeam; }}
+
+	[ SerializeField ]
+	private Movement _movement;
+	public Movement Movement { get { return _movement; }}
 }

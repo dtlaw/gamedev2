@@ -247,4 +247,14 @@ public class Movement : MonoBehaviour {
 			_yawAxis.Zero();
 		}
 	}
+
+	public void StepBack() {
+		_rigidbody.velocity = Vector3.Lerp( _rigidbody.velocity, Vector3.zero, _panicSpeed );
+		_rigidbody.angularVelocity = Vector3.Lerp( _rigidbody.angularVelocity, Vector3.zero, _panicSpeed );
+
+		_rigidbody.AddRelativeForce( Vector3.back * 25f);
+		_strafeAxis.Zero();
+		_rollAxis.Zero();
+		_yawAxis.Zero();
+	}
 }
