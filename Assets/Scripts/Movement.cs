@@ -145,14 +145,14 @@ public class Movement : MonoBehaviour {
 			_handbody.constraints = RigidbodyConstraints.None;
 		}
 		
-		_rigidbody.AddRelativeForce( Vector3.forward * _translationForce * _forwardAxis.GetState());
-		if ( _forwardAxis.GetState() > 0 ) {
+		_rigidbody.AddRelativeForce( Vector3.forward * _translationForce * -_forwardAxis.GetState());
+		if ( _forwardAxis.GetState() < 0 ) {
 			_forwardUI.SetActive(true);
 			_thruster5.Play();
 			_thruster6.Play();
 			_thruster7.Play();
 			_thruster8.Play();
-		} else if ( _forwardAxis.GetState() < 0 ) {
+		} else if ( _forwardAxis.GetState() > 0 ) {
 			_backwardUI.SetActive(true);
 			_thruster1.Play();
 			_thruster2.Play();
