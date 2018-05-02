@@ -65,7 +65,9 @@ public class Lever : Control {
 		_animator.SetFloat( "NormalizedTime", ( _state - _minValue ) / ( _maxValue - _minValue ));
 	}
 
-
+	public bool gripped(){
+		return _gripped;
+	}
 	// Public interface
 	public override void OnClick() {
 		_gripped = true;
