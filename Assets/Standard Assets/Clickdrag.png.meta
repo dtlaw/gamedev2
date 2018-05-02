@@ -1,12 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 0d47f5efa1dc9184f920938addefc593
-timeCreated: 1525227298
-=======
-guid: 0614aac947218b84ab7fc096e293d384
-timeCreated: 1525227755
->>>>>>> 3e7c6b6f9bbd6ae33289fb82962fa133ca62a18f
-licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
@@ -62,7 +55,6 @@ TextureImporter:
   textureFormatSet: 0
   platformSettings:
   - buildTarget: DefaultTexturePlatform
-<<<<<<< HEAD
     maxTextureSize: 64
     resizeAlgorithm: 0
     textureFormat: -1
@@ -77,12 +69,6 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
-=======
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
->>>>>>> 3e7c6b6f9bbd6ae33289fb82962fa133ca62a18f
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
