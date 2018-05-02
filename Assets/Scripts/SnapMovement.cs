@@ -3,43 +3,58 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SnapMovement : MonoBehaviour {
-	private Vector3 _doorPos;
+	private Vector3[] _doorPositions;
 	[ SerializeField ]
-	private GameObject goal;
+	private GameObject[] goals;
 
 	[ SerializeField ]
-	private GameObject door;
+	private GameObject[] doors;
 
     private Hand _hand;
     private TractorBeam _beam;
     private bool snapped;
+    private int index;
+    Vector3 oldPos;
+    Vector3 newPos;
 	// Use this for initialization
 	void Start () {
-		_doorPos = door.transform.position;
+        _doorPositions = new Vector3[doors.Length];
+        for(int i = 0; i < doors.Length; i++)
+        {
+            _doorPositions[i] = doors[i].transform.position;
+        }
         _hand = GameManager.Instance.GetComponent<CockpitReferences>().Hand;
         _beam = GameManager.Instance.GetComponent<CockpitReferences>().TractorBeam;
         snapped = false;
+        index = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         if (snapped)
         {
-            transform.rotation = Quaternion.Euler(new Vector3(goal.transform.rotation.eulerAngles.x, goal.transform.rotation.eulerAngles.y, goal.transform.rotation.eulerAngles.z));
-            transform.position = Vector3.Lerp(transform.position, goal.transform.position, Time.time);
-            door.transform.position = Vector3.Lerp(door.transform.position, _doorPos + (door.transform.right * 3.5f), 0.10f);
             if (_hand.Grabbing || _beam.Grabbing) {
                 snapped = false;
+                doors[index].transform.position = oldPos;
             }
         }
         if (!snapped)
         {   
-            door.transform.position = Vector3.Lerp(door.transform.position, _doorPos, 0.10f);
-            if (Vector3.Distance(this.transform.position, goal.transform.position) <= 1.3)
+            for(int i = 0; i < doors.Length; i++)
             {
-                if (!_hand.Grabbing && !_beam.Grabbing)
+                if (Vector3.Distance(this.transform.position, goals[i].transform.position) <= 1.3)
                 {
-                    snapped = true; 
+                    if (!_hand.Grabbing && !_beam.Grabbing)
+                    {
+                        index = i;
+                        snapped = true;
+                        transform.rotation = Quaternion.Euler(new Vector3(goals[index].transform.rotation.eulerAngles.x, goals[index].transform.rotation.eulerAngles.y, goals[index].transform.rotation.eulerAngles.z));
+                        transform.position = Vector3.Lerp(transform.position, goals[index].transform.position, Time.time);
+                        newPos = doors[index].transform.position + (doors[index].transform.right * 3.5f);
+                        oldPos = doors[index].transform.position;
+                        //doors[index].transform.position = Vector3.Lerp(doors[index].transform.position, newPos, 0.01f);
+                        doors[index].transform.position = newPos;
+                    }
                 }
             }
         }
