@@ -244,6 +244,7 @@ public class Movement : MonoBehaviour {
 			_strafeAxis.Zero();
 			_rollAxis.Zero();
 			_yawAxis.Zero();
+			_pitchAxis.Zero();
 		}
 	}
 
