@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+[ RequireComponent( typeof( Rigidbody )) ]
 public class Movement : MonoBehaviour {
+
 	// Exposed variables
 	[ Header( "Movement forces" ) ]
 	[ SerializeField ]
@@ -29,9 +30,7 @@ public class Movement : MonoBehaviour {
 
 	[ Space ]
 	[ SerializeField ]
-	private Control _pitchUp;
-	[ SerializeField ]
-	private Control _pitchDown;
+	private Control _pitchAxis;
 	[ SerializeField ]
 	private Control _rollAxis;
 	[ SerializeField ]
@@ -192,16 +191,15 @@ public class Movement : MonoBehaviour {
 			_thruster7.Play();
 		}
 
-		if ( _pitchUp.IsOn()) {
+		_rigidbody.AddRelativeTorque( _pitchTorque * _pitchAxis.GetState(), 0, 0 );
+		if ( _pitchAxis.GetState() > 0 ) {
 			_pitchUpUI.SetActive(true);
-			_rigidbody.AddRelativeTorque(-_pitchTorque, 0, 0);
 			_thruster2.Play();
 			_thruster4.Play();
 			_thruster5.Play();
 			_thruster7.Play();
-		} else if ( _pitchDown.IsOn()) {
+		} else if ( _pitchAxis.GetState() < 0 ) {
 			_pitchDownUI.SetActive(true);
-			_rigidbody.AddRelativeTorque(_pitchTorque, 0, 0);
 			_thruster1.Play();
 			_thruster3.Play();
 			_thruster6.Play();
