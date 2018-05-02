@@ -90,7 +90,6 @@ public class Hand : MonoBehaviour {
 			if(_switch){//state is 1
 				// HACK: Manually playing the animator clip
 				_animator.SetBool("Grabbing", true);
-				_grabbing = true;
 			}else{//state is 0
 				_animator.SetBool("Grabbing", false);
 				_grabbing = false;

@@ -108,6 +108,7 @@ public class Movement : MonoBehaviour {
 	}
 
 	private void Update() {
+
 		_thruster1.Stop();
 		_thruster2.Stop();
 		_thruster3.Stop();
