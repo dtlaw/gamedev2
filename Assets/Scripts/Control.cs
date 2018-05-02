@@ -14,6 +14,7 @@ public abstract class Control : MonoBehaviour {
 	public virtual void OnScrollUp() {}
 	public virtual void OnScrollDown() {}
 
+
 	public float GetState() {
 		return _state;
 	}

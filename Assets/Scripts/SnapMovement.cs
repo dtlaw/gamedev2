@@ -23,21 +23,23 @@ public class SnapMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (!snapped)
+        if (snapped)
         {
-            if (this.transform.position == goal.transform.position)
-            {
-                transform.rotation = Quaternion.Euler(new Vector3(goal.transform.rotation.eulerAngles.x, goal.transform.rotation.eulerAngles.y, goal.transform.rotation.eulerAngles.z));
-                transform.position = Vector3.Lerp(transform.position, goal.transform.position, Time.time);
-                door.transform.position = Vector3.Lerp(door.transform.position, _doorPos + (door.transform.right * 3.5f), 0.10f);
+            transform.rotation = Quaternion.Euler(new Vector3(goal.transform.rotation.eulerAngles.x, goal.transform.rotation.eulerAngles.y, goal.transform.rotation.eulerAngles.z));
+            transform.position = Vector3.Lerp(transform.position, goal.transform.position, Time.time);
+            door.transform.position = Vector3.Lerp(door.transform.position, _doorPos + (door.transform.right * 3.5f), 0.10f);
+            if (_hand.Grabbing || _beam.Grabbing) {
+                snapped = false;
             }
-            else if (Vector3.Distance(this.transform.position, goal.transform.position) <= 1.3)
+        }
+        if (!snapped)
+        {   
+            door.transform.position = Vector3.Lerp(door.transform.position, _doorPos, 0.10f);
+            if (Vector3.Distance(this.transform.position, goal.transform.position) <= 1.3)
             {
                 if (!_hand.Grabbing && !_beam.Grabbing)
                 {
-                    transform.rotation = Quaternion.Euler(new Vector3(goal.transform.rotation.eulerAngles.x, goal.transform.rotation.eulerAngles.y, goal.transform.rotation.eulerAngles.z));
-                    transform.position = Vector3.Lerp(transform.position, goal.transform.position, Time.time);
-                    door.transform.position = Vector3.Lerp(door.transform.position, _doorPos + (door.transform.right * 3.5f), 0.10f);
+                    snapped = true; 
                 }
             }
         }
