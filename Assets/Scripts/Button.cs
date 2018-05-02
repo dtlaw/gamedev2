@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Button : Control {
 
@@ -8,12 +9,13 @@ public class Button : Control {
 	[ SerializeField ]
 	private Animator _animator;
 
+	 
+        
 
 	// Messages
 	private void Awake() {
 		_state = 0;
 	}
-
 
 	// Public interface
 	public override void OnClick() {
