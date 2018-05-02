@@ -33,9 +33,13 @@ public class SnapMovement : MonoBehaviour {
 	void Update () {
         if (snapped)
         {
-            if (_hand.Grabbing || _beam.Grabbing) {
-                snapped = false;
-                doors[index].transform.position = oldPos;
+            if(Vector3.Distance(this.transform.position, goals[index].transform.position) >= 0.3)
+            {
+                if (_hand.Grabbing || _beam.Grabbing)
+                {
+                    snapped = false;
+                    doors[index].transform.position = doors[index].transform.position - (doors[index].transform.right * 3.5f); ;
+                }
             }
         }
         if (!snapped)
@@ -51,7 +55,6 @@ public class SnapMovement : MonoBehaviour {
                         transform.rotation = Quaternion.Euler(new Vector3(goals[index].transform.rotation.eulerAngles.x, goals[index].transform.rotation.eulerAngles.y, goals[index].transform.rotation.eulerAngles.z));
                         transform.position = Vector3.Lerp(transform.position, goals[index].transform.position, Time.time);
                         newPos = doors[index].transform.position + (doors[index].transform.right * 3.5f);
-                        oldPos = doors[index].transform.position;
                         //doors[index].transform.position = Vector3.Lerp(doors[index].transform.position, newPos, 0.01f);
                         doors[index].transform.position = newPos;
                     }
