@@ -31,7 +31,7 @@ public class DisableCollider : MonoBehaviour {
 			_movement.StepBack();
 			// particle systems for collision
 			deathParticles.startColor = _self.startColor;
-			Instantiate(deathParticles, _hand.transform.position, Quaternion.identity);
+			Instantiate(deathParticles, _hand.transform.position + _hand.transform.up * 0.5f, Quaternion.identity);
 		}
 	}
 

@@ -18,12 +18,12 @@ public class MouseFollow : MonoBehaviour {
 		if(Physics.Raycast(mouse, out hit, 1000f)){
 			if(hit.collider.gameObject.GetComponent<Button>() != null ||
 				hit.collider.gameObject.GetComponent<TwoPositionSwitch>() != null){
-				Cursor.SetCursor(_icons[0], Vector2.zero, cursor);
+				Cursor.SetCursor(_icons[0], new Vector2(16, 16), cursor);
 			}else if(hit.collider.gameObject.GetComponent<Knob>() != null){
-					Cursor.SetCursor(_icons[1], Vector2.zero, cursor);
+					Cursor.SetCursor(_icons[1],  new Vector2(16, 16), cursor);
 			}else if(hit.collider.gameObject.GetComponent<Lever>() != null){
 				if(!hit.collider.gameObject.GetComponent<Lever>().gripped()){
-					Cursor.SetCursor(_icons[2], Vector2.zero, cursor);
+					Cursor.SetCursor(_icons[2],  new Vector2(16, 16), cursor);
 				}
 			}else{
 				Cursor.SetCursor(null, Vector2.zero, cursor);
