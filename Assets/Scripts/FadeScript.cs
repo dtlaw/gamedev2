@@ -7,15 +7,16 @@ public class FadeScript : MonoBehaviour {
     [SerializeField]
     private GameObject Image;
 
-    private Animation Fade;
+    private Animator Fade;
 
     private void Awake()
     {
-        Fade = Image.GetComponent<Animation>();
+        Fade = Image.GetComponent<Animator>();
     }
 
     void OnTriggerEnter(Collider Other)
     {
+        Fade.enabled = true;
         Fade.Play("FadeOut");
     }
 
